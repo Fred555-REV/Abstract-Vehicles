@@ -7,8 +7,10 @@ public class Motorcycle extends Vehicle {
     }
 
     @Override
-    public void method1() {
-
+    public void displayVehicle() {
+        System.out.println("   ,\n" +
+                ".-/c-.,::\n" +
+                "(_)'==(_)\n");
     }
 
     @Override

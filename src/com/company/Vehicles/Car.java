@@ -6,8 +6,11 @@ public class Car extends Vehicle {
     }
 
     @Override
-    public void method1() {
-
+    public void displayVehicle() {
+        System.out.println("  ______\n" +
+                " /|_||_\\`.__\n" +
+                "(   _    _ _\\\n" +
+                "=`-(_)--(_)-' \n");
     }
 
     @Override

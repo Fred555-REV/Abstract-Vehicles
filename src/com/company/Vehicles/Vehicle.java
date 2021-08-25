@@ -20,7 +20,7 @@ public abstract class Vehicle {
     }
 
     //TODO find out what vehicle methods I can add that varies between vehicles
-    public abstract void method1();
+    public abstract void displayVehicle();
 
     public abstract void method2();
 
