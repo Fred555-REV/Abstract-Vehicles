@@ -1,8 +1,16 @@
 package com.company.Vehicles;
 
-public class Car extends Vehicle {
-    public Car(String manufacturer, String model, String color, Engine engine, int passengerSpace, int topSpeedInMPH, int weightInOunces) {
-        super(manufacturer, model, color, engine, passengerSpace, topSpeedInMPH, weightInOunces);
+public class Car extends LandVehicle {
+    private boolean isAutomatic;
+
+    public Car(String manufacturer, String model, String color, Engine engine, int passengerSpace, int topSpeedInMPH, int weightInOunces, boolean isAutomatic) {
+        super(manufacturer, model, color, engine, passengerSpace, topSpeedInMPH, weightInOunces, 4);
+        this.isAutomatic = isAutomatic;
+    }
+
+    public Car(String manufacturer, String model, String color, Engine engine, int passengerSpace, int topSpeedInMPH, int weightInOunces, int wheelAmount, boolean isAutomatic) {
+        super(manufacturer, model, color, engine, passengerSpace, topSpeedInMPH, weightInOunces, wheelAmount);
+        this.isAutomatic = isAutomatic;
     }
 
     @Override
@@ -14,15 +22,21 @@ public class Car extends Vehicle {
     }
 
     @Override
-    public void method2() {
+    public void displayWeight() {
+
+    }
+
+    @Override
+    public void displaySpeed() {
 
     }
 
 
     @Override
     public String toString() {
-        return "Car{" +
+        return "\nCar{" +
                 super.toString() +
+                ", \nisAutomatic=" + isAutomatic +
                 "}";
     }
 }

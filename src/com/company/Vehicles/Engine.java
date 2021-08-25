@@ -2,13 +2,13 @@ package com.company.Vehicles;
 
 public class Engine {
     private String type;
-    private String Brand;
+    private String name;
     private int horsePower;
     private boolean isOn;
 
-    public Engine(String type, String brand, int horsePower) {
+    public Engine(String type, String name, int horsePower) {
         this.type = type;
-        Brand = brand;
+        this.name = name;
         this.horsePower = horsePower;
         isOn = false;
     }
@@ -25,7 +25,7 @@ public class Engine {
     public String toString() {
         return "Engine{" +
                 "type='" + type + '\'' +
-                ", Brand='" + Brand + '\'' +
+                ", Name='" + name + '\'' +
                 ", horsePower=" + horsePower +
                 '}';
     }

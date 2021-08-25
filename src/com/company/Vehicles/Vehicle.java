@@ -19,10 +19,11 @@ public abstract class Vehicle {
         this.weightInOunces = weightInOunces;
     }
 
-    //TODO find out what vehicle methods I can add that varies between vehicles
     public abstract void displayVehicle();
 
-    public abstract void method2();
+    public abstract void displayWeight();   //My thinking is that large vehicles can use tons and smaller use pounds
+
+    public abstract void displaySpeed();    //My thinking is that planes and boats use knots while others use miles
 
     @Override
     public String toString() {
@@ -34,4 +35,7 @@ public abstract class Vehicle {
                 ", \ntopSpeed=" + topSpeedInMPH +
                 ", \nweightInOunces=" + weightInOunces + "\n";
     }
+
+
+
 }
