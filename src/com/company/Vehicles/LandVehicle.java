@@ -15,6 +15,6 @@ public abstract class LandVehicle extends Vehicle {
     @Override
     public String toString() {
         return super.toString() +
-                "wheelAmount=" + wheelAmount + "\n";
+                "\nwheelAmount=" + wheelAmount+",";
     }
 }

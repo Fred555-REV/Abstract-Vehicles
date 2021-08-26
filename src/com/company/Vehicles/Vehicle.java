@@ -1,13 +1,14 @@
 package com.company.Vehicles;
 
 public abstract class Vehicle {
-    private String manufacturer;
-    private String model;
-    private String color;
-    private Engine engine;
-    private int passengerSpace;
-    private int topSpeedInMPH;
-    private int weightInOunces;
+    protected String manufacturer;
+    protected String model;
+    protected String color;
+    protected Engine engine;
+    protected int passengerSpace;
+    protected int topSpeedInMPH;
+    protected int weightInOunces;
+    protected int currentPassengerAmount;
 
     public Vehicle(String manufacturer, String model, String color, Engine engine, int passengerSpace, int topSpeedInMPH, int weightInOunces) {
         this.manufacturer = manufacturer;
@@ -17,6 +18,58 @@ public abstract class Vehicle {
         this.passengerSpace = passengerSpace;
         this.topSpeedInMPH = topSpeedInMPH;
         this.weightInOunces = weightInOunces;
+        currentPassengerAmount = 0;
+
+    }
+
+    public void changePowerStatus() {
+        engine.turnOnOff();
+    }
+
+    public void getPowerStatus() {
+        if (engine.getPowerStatus()) {
+            System.out.println(model + "'s Engine is on");
+        } else {
+            System.out.println(model + "'s Engine is off");
+        }
+    }
+
+    public boolean addPassenger() {
+        if (currentPassengerAmount < passengerSpace) {
+            currentPassengerAmount++;
+            return true;
+        } else {
+            System.out.println("Not enough space, " + model + "'s  max passengers is " + passengerSpace);
+            return false;
+        }
+    }
+
+    public void addPassengers(int amount) {
+        for (int i = 0; i < amount; i++) {
+            if (!addPassenger()) {
+                break;
+            }
+
+        }
+    }
+
+    public boolean removePassenger() {
+        if (currentPassengerAmount > 0) {
+            currentPassengerAmount--;
+            return true;
+        } else {
+            System.out.println("There are no passengers to remove");
+            return false;
+        }
+    }
+
+    public void removePassengers(int amount) {
+        for (int i = 0; i < amount; i++) {
+            if (!removePassenger()) {
+                break;
+            }
+
+        }
     }
 
     public abstract void displayVehicle();
@@ -25,8 +78,16 @@ public abstract class Vehicle {
 
     public abstract void displaySpeed();    //My thinking is that planes and boats use knots while others use miles
 
-    public void changePowerStatus() {
-        engine.turnOnOff();
+    public int getCurrentPassengerAmount() {
+        return currentPassengerAmount;
+    }
+
+    public void displayCurrentPassengerAmount() {
+        System.out.printf("%s has %s passengers\n", model, currentPassengerAmount);
+    }
+
+    public String getModel() {
+        return model;
     }
 
     @Override
@@ -35,9 +96,10 @@ public abstract class Vehicle {
                 ", \nmodel='" + model + '\'' +
                 ", \ncolor='" + color + '\'' +
                 ", \n" + engine +
+                ", \ncurrentPassengerAmount=" + currentPassengerAmount +
                 ", \npassengerSpace=" + passengerSpace +
                 ", \ntopSpeed=" + topSpeedInMPH +
-                ", \nweightInOunces=" + weightInOunces + "\n";
+                ", \nweightInOunces=" + weightInOunces;
     }
 
 

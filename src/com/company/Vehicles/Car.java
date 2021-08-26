@@ -23,12 +23,12 @@ public class Car extends LandVehicle {
 
     @Override
     public void displayWeight() {
-
+        System.out.printf("%s weighs %s lbs.\n", model, (weightInOunces * 16));
     }
 
     @Override
     public void displaySpeed() {
-
+        System.out.printf("%s's Top Speed is %s mph.\n", model, topSpeedInMPH);
     }
 
 
@@ -36,7 +36,7 @@ public class Car extends LandVehicle {
     public String toString() {
         return "\nCar{" +
                 super.toString() +
-                ", \nisAutomatic=" + isAutomatic +
-                "}";
+                "\nisAutomatic=" + isAutomatic +
+                "}\n";
     }
 }

@@ -1,17 +1,14 @@
 package com.company.Vehicles;
 
+import java.sql.Date;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TestVehicles {
     public static void main(String[] args) {
-        Engine hondaEngine = new Engine("SUV", "Honda", 1400);
-//        System.out.println(engine.getPowerStatus());
-        hondaEngine.turnOnOff();
-//        System.out.println(engine.getPowerStatus());
-        hondaEngine.turnOnOff();
-//        System.out.println(engine.getPowerStatus());
-//        Car honda = new Car("Honda", "CR-V", "Silver", hondaEngine, 5, 250, 7000, true);
         Car honda = new Car("Honda", "CR-V", "Silver", new Engine("SUV", "Honda", 1400), 5, 250, 7000, true);
 //        System.out.println(honda);
         honda.displayVehicle();
@@ -20,7 +17,7 @@ public class TestVehicles {
 //        System.out.println(harley);
         harley.displayVehicle();
 
-        CommercialAircraft airplane = new CommercialAircraft("Manufacturer", "Model", "White", new Engine("type", "name", 100), 100, 100, 100,2);
+        CommercialAircraft airplane = new CommercialAircraft("Boeing", "Boeing 737-800", "White", new Engine("high-bypass turbofan", "CFM56", 62, 8000), 100, 100, 100, 2);
         System.out.println(airplane);
         airplane.displayVehicle();
 

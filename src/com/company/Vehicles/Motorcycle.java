@@ -22,18 +22,19 @@ public class Motorcycle extends LandVehicle {
 
     @Override
     public void displayWeight() {
-
+        System.out.printf("%s weighs %s lbs.\n", model, (weightInOunces * 16));
     }
 
     @Override
     public void displaySpeed() {
-
+        System.out.printf("%s's Top Speed is %s mph.\n", model, topSpeedInMPH);
     }
 
     @Override
     public String toString() {
         return "\nMotorcycle{" +
                 super.toString() +
-                "}";
+                ", \ntype=" + type +
+                "}\n";
     }
 }

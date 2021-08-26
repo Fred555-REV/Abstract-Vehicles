@@ -4,12 +4,22 @@ public class Engine {
     private String type;
     private String name;
     private int horsePower;
+    private int amount;
     private boolean isOn;
 
     public Engine(String type, String name, int horsePower) {
         this.type = type;
         this.name = name;
         this.horsePower = horsePower;
+        amount = 1;
+        isOn = false;
+    }
+
+    public Engine(String type, String name, int horsePower, int amount) {
+        this.type = type;
+        this.name = name;
+        this.horsePower = horsePower;
+        this.amount = amount;
         isOn = false;
     }
 
@@ -25,8 +35,9 @@ public class Engine {
     public String toString() {
         return "Engine{" +
                 "type='" + type + '\'' +
-                ", Name='" + name + '\'' +
+                ", name='" + name + '\'' +
                 ", horsePower=" + horsePower +
-                '}';
+                ", amount=" + amount +
+                "}";
     }
 }
