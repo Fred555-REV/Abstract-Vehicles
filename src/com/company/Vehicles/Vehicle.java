@@ -25,6 +25,10 @@ public abstract class Vehicle {
 
     public abstract void displaySpeed();    //My thinking is that planes and boats use knots while others use miles
 
+    public void changePowerStatus() {
+        engine.turnOnOff();
+    }
+
     @Override
     public String toString() {
         return "\nmanufacturer='" + manufacturer + '\'' +
@@ -35,7 +39,6 @@ public abstract class Vehicle {
                 ", \ntopSpeed=" + topSpeedInMPH +
                 ", \nweightInOunces=" + weightInOunces + "\n";
     }
-
 
 
 }
