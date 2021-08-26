@@ -21,12 +21,12 @@ public class CommercialAircraft extends Vehicle {
 
     @Override
     public void displayWeight() {
-        System.out.printf("%s weighs %s tons", model, (weightInOunces / (16 * 2000)));
+        System.out.printf("%s weighs %s tons\n", model, (weightInOunces / (16 * 2000)));
     }
 
     @Override
     public void displaySpeed() {
-        System.out.printf("%s's Top Speed is\t%s knots", model, (topSpeedInMPH * .0868976));
+        System.out.printf("%s's Top Speed is\t%s knots\n", model, (topSpeedInMPH * .0868976));
     }
 
     @Override

@@ -37,7 +37,7 @@ public class Motorcycle extends LandVehicle {
     public String toString() {
         return "\nMotorcycle{" +
                 super.toString() +
-                ", \ntype=" + type +
+                "\ntype=" + type +
                 "}\n";
     }
 }

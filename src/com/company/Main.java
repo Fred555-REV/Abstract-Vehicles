@@ -36,7 +36,8 @@ public class Main {
         airplane.displayCurrentPassengerAmount();
         airplane.displayWeight();
         airplane.displaySpeed();
-
+        System.out.println();
+        harley.changePowerStatus();
         harley.getPowerStatus();
         harley.displaySpeed();
         harley.displayWeight();
