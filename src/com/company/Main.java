@@ -1,6 +1,8 @@
 package com.company;
 
 import com.company.Vehicles.*;
+import com.company.Vehicles.LandVehicles.Car;
+import com.company.Vehicles.LandVehicles.Motorcycle;
 
 import java.util.ArrayList;
 import java.util.List;

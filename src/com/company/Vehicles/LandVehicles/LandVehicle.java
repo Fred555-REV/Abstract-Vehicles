@@ -1,4 +1,7 @@
-package com.company.Vehicles;
+package com.company.Vehicles.LandVehicles;
+
+import com.company.Vehicles.Engine;
+import com.company.Vehicles.Vehicle;
 
 public abstract class LandVehicle extends Vehicle {
     private int wheelAmount;
