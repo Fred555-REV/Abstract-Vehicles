@@ -12,7 +12,7 @@ public class Main {
                 "Honda", "CR-V", "Silver",
                 new Engine("SUV", "Honda", 212), 5, 150, 54400, true);
         Motorcycle harley = new Motorcycle(
-                "Harley Davidson", "Softtail Slim", "Cruiser", "Midnight Crimson",
+                "Harley Davidson", "Softail Slim", "Cruiser", "Midnight Crimson",
                 new Engine("V-Twin", "Milwaukee-Eight 107", 77),
                 2, 200, 10737);
         CommercialAircraft airplane = new CommercialAircraft(
