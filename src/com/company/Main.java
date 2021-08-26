@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         Car honda = new Car(
                 "Honda", "CR-V", "Silver",
-                new Engine("SUV", "Honda", 212), 5, 150, 54400, true);
+                new Engine("2.0 L 4-cylinder", "CR-V", 212), 5, 150, 54400, true);
         Motorcycle harley = new Motorcycle(
                 "Harley Davidson", "Softail Slim", "Cruiser", "Midnight Crimson",
                 new Engine("V-Twin", "Milwaukee-Eight 107", 77),
