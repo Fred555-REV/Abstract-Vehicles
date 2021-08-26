@@ -8,9 +8,17 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        Car honda = new Car("Honda", "CR-V", "Silver", new Engine("SUV", "Honda", 1400), 5, 150, 54400, true);
-        Motorcycle harley = new Motorcycle("Harley Davidson", "Softtail Slim", "Cruiser", "Midnight Crimson", new Engine("V-Twin", "Milwaukee-Eight 107", 77), 2, 200, 10737);
-        CommercialAircraft airplane = new CommercialAircraft("Boeing", "Boeing 737-800", "White", new Engine("high-bypass turbofan", "CFM56", 62, 8000), 162, 588, 1451360, 4);
+        Car honda = new Car(
+                "Honda", "CR-V", "Silver",
+                new Engine("SUV", "Honda", 212), 5, 150, 54400, true);
+        Motorcycle harley = new Motorcycle(
+                "Harley Davidson", "Softtail Slim", "Cruiser", "Midnight Crimson",
+                new Engine("V-Twin", "Milwaukee-Eight 107", 77),
+                2, 200, 10737);
+        CommercialAircraft airplane = new CommercialAircraft(
+                "Boeing", "Boeing 737-800", "White",
+                new Engine("high-bypass turbofan", "CFM56", 62, 8000),
+                162, 588, 1451360, 4);
 
         System.out.println(honda);
         honda.addPassenger();

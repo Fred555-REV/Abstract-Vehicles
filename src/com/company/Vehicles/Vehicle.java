@@ -10,7 +10,8 @@ public abstract class Vehicle {
     protected int weightInOunces;
     protected int currentPassengerAmount;
 
-    public Vehicle(String manufacturer, String model, String color, Engine engine, int passengerSpace, int topSpeedInMPH, int weightInOunces) {
+    public Vehicle(String manufacturer, String model, String color, Engine engine,
+                   int passengerSpace, int topSpeedInMPH, int weightInOunces) {
         this.manufacturer = manufacturer;
         this.model = model;
         this.color = color;
