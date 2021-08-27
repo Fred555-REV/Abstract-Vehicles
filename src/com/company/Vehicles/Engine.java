@@ -5,6 +5,7 @@ public class Engine {
     private String name;
     private int horsePower;
     private int amount;
+    protected int cost;
     private boolean isOn;
 
     public Engine(String type, String name, int horsePower) {
@@ -12,6 +13,7 @@ public class Engine {
         this.name = name;
         this.horsePower = horsePower;
         amount = 1;
+        cost = horsePower;
         isOn = false;
     }
 
@@ -20,6 +22,7 @@ public class Engine {
         this.name = name;
         this.horsePower = horsePower;
         this.amount = amount;
+        cost = (horsePower*amount);
         isOn = false;
     }
 
@@ -38,6 +41,7 @@ public class Engine {
                 ", name='" + name + '\'' +
                 ", horsePower=" + horsePower +
                 ", amount=" + amount +
+                ", cost=" + cost +
                 "}";
     }
 }

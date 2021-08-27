@@ -6,13 +6,13 @@ import com.company.Vehicles.LandVehicles.LandVehicle;
 public class Car extends LandVehicle {
     private boolean isAutomatic;
 
-    public Car(String manufacturer, String model, String color, Engine engine, int passengerSpace, int topSpeedInMPH, int weightInOunces, boolean isAutomatic) {
-        super(manufacturer, model, color, engine, passengerSpace, topSpeedInMPH, weightInOunces, 4);
+    public Car(String manufacturer, String model, String color, Engine engine, int cost, int passengerSpace, int topSpeedInMPH, int weightInOunces, boolean isAutomatic) {
+        super(manufacturer, model, color, engine, cost, passengerSpace, topSpeedInMPH, weightInOunces, 4);
         this.isAutomatic = isAutomatic;
     }
 
-    public Car(String manufacturer, String model, String color, Engine engine, int passengerSpace, int topSpeedInMPH, int weightInOunces, int wheelAmount, boolean isAutomatic) {
-        super(manufacturer, model, color, engine, passengerSpace, topSpeedInMPH, weightInOunces, wheelAmount);
+    public Car(String manufacturer, String model, String color, Engine engine, int cost, int passengerSpace, int topSpeedInMPH, int weightInOunces, int wheelAmount, boolean isAutomatic) {
+        super(manufacturer, model, color, engine, cost, passengerSpace, topSpeedInMPH, weightInOunces, wheelAmount);
         this.isAutomatic = isAutomatic;
     }
 

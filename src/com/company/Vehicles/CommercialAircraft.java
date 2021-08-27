@@ -3,8 +3,8 @@ package com.company.Vehicles;
 public class CommercialAircraft extends Vehicle {
     private int wingAmount;
 
-    public CommercialAircraft(String manufacturer, String model, String color, Engine engine, int passengerSpace, int topSpeedInMPH, int weightInOunces, int wingAmount) {
-        super(manufacturer, model, color, engine, passengerSpace, topSpeedInMPH, weightInOunces);
+    public CommercialAircraft(String manufacturer, String model, String color, Engine engine, int cost,int passengerSpace, int topSpeedInMPH, int weightInOunces, int wingAmount) {
+        super(manufacturer, model, color, engine, cost, passengerSpace, topSpeedInMPH, weightInOunces);
         this.wingAmount = wingAmount;
     }
 

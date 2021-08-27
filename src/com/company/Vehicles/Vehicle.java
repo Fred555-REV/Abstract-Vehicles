@@ -5,17 +5,19 @@ public abstract class Vehicle {
     protected String model;
     protected String color;
     protected Engine engine;
+    protected int cost;
     protected int passengerSpace;
     protected int topSpeedInMPH;
     protected int weightInOunces;
     protected int currentPassengerAmount;
 
     public Vehicle(String manufacturer, String model, String color, Engine engine,
-                   int passengerSpace, int topSpeedInMPH, int weightInOunces) {
+                   int cost, int passengerSpace, int topSpeedInMPH, int weightInOunces) {
         this.manufacturer = manufacturer;
         this.model = model;
         this.color = color;
         this.engine = engine;
+        this.cost = cost;
         this.passengerSpace = passengerSpace;
         this.topSpeedInMPH = topSpeedInMPH;
         this.weightInOunces = weightInOunces;
@@ -97,6 +99,7 @@ public abstract class Vehicle {
                 ", \nmodel='" + model + '\'' +
                 ", \ncolor='" + color + '\'' +
                 ", \n" + engine +
+                ", \ncost=" + cost +
                 ", \ncurrentPassengerAmount=" + currentPassengerAmount +
                 ", \npassengerSpace=" + passengerSpace +
                 ", \ntopSpeed=" + topSpeedInMPH +

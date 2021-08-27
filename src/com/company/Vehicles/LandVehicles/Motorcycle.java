@@ -6,13 +6,13 @@ import com.company.Vehicles.LandVehicles.LandVehicle;
 public class Motorcycle extends LandVehicle {
     private String type;
 
-    public Motorcycle(String manufacturer, String model, String type, String color, Engine engine, int passengerSpace, int topSpeedInMPH, int weightInOunces) {
-        super(manufacturer, model, color, engine, passengerSpace, topSpeedInMPH, weightInOunces, 2);
+    public Motorcycle(String manufacturer, String model, String type, String color, Engine engine, int cost, int passengerSpace, int topSpeedInMPH, int weightInOunces) {
+        super(manufacturer, model, color, engine, cost, passengerSpace, topSpeedInMPH, weightInOunces, 2);
         this.type = type;
     }
 
-    public Motorcycle(String manufacturer, String model, String type, String color, Engine engine, int passengerSpace, int topSpeedInMPH, int weightInOunces, int wheelAmount) {
-        super(manufacturer, model, color, engine, passengerSpace, topSpeedInMPH, weightInOunces, wheelAmount);
+    public Motorcycle(String manufacturer, String model, String type, String color, Engine engine, int cost, int passengerSpace, int topSpeedInMPH, int weightInOunces, int wheelAmount) {
+        super(manufacturer, model, color, engine, cost, passengerSpace, topSpeedInMPH, weightInOunces, wheelAmount);
         this.type = type;
     }
 
