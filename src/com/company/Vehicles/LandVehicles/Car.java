@@ -26,7 +26,7 @@ public class Car extends LandVehicle {
 
     @Override
     public void displayWeight() {
-        System.out.printf("%s weighs %s lbs.\n", model, (weightInOunces * 16));
+        System.out.printf("%s weighs %s lbs.\n", model, (weightInOunces / 16));
     }
 
     @Override

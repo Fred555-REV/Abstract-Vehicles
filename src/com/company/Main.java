@@ -12,15 +12,15 @@ public class Main {
     public static void main(String[] args) {
         Car honda = new Car(
                 "Honda", "CR-V", "Silver",
-                new Engine("2.0 L 4-cylinder", "CR-V", 212), 5, 150, 54400, true);
+                new Engine("2.0 L 4-cylinder", "CR-V", 212), 5, 150, 54_400, true);
         Motorcycle harley = new Motorcycle(
                 "Harley Davidson", "Softail Slim", "Cruiser", "Midnight Crimson",
                 new Engine("V-Twin", "Milwaukee-Eight 107", 77),
-                2, 200, 10737);
+                2, 200, 10_737);
         CommercialAircraft airplane = new CommercialAircraft(
                 "Boeing", "Boeing 737-800", "White",
                 new Engine("high-bypass turbofan", "CFM56", 62, 8000),
-                162, 588, 1451360, 4);
+                162, 588, 1_451_360, 4);
 
         System.out.println(honda);
         honda.addPassenger();
