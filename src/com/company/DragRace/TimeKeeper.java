@@ -1,21 +1,34 @@
 package com.company.DragRace;
 
-import java.time.Clock;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.Temporal;
+import java.time.temporal.TemporalAccessor;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class TimeKeeper {
-    private Clock clock;
+    protected static Clock clock = Clock.system(ZoneId.systemDefault());
+    protected static LocalDateTime endTime = LocalDateTime.now();
     private Timer timer;
     private TimerTask task;
 
-    public TimeKeeper(Timer timer, TimerTask task) {
-        this.timer = timer;
-        this.task = task;
+    public TimeKeeper() {
+        this.timer = new Timer();
+
     }
 
-    public void timePass() {
-        task.run();
+    public static void timePass() {
+        endTime = endTime.plusSeconds(1L);
     }
 
+    public static void passTime() {
+        Duration duration = Duration.ofSeconds(1);
+        clock = Clock.tick(clock, duration);
+
+    }
+
+    public Clock getClock() {
+        return clock;
+    }
 }
