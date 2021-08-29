@@ -22,7 +22,7 @@ public class TimeKeeper {
         endTime = endTime.plusSeconds(1L);
     }
 
-    public static void passTime() {
+    public static void passClockTime() {
         Duration duration = Duration.ofSeconds(1);
         clock = Clock.tick(clock, duration);
 

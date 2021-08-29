@@ -11,6 +11,10 @@ public class RaceTest {
         TimeKeeper.timePass();
         TimeKeeper.timePass();
         CLI.displayCurrentTime();
-        CLI.displayInitialTime();
+        TimeKeeper.timePass();
+        TimeKeeper.timePass();
+        TimeKeeper.timePass();
+        TimeKeeper.timePass();
+        CLI.displayTotalTime();
     }
 }
