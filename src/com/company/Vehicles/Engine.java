@@ -1,12 +1,12 @@
 package com.company.Vehicles;
 
-public class Engine {
-    private String type;
-    private String name;
-    private int horsePower;
-    private int amount;
+public abstract class Engine {
+    protected String type;
+    protected String name;
+    protected int horsePower;
+    protected int amount;
     protected int cost;
-    private boolean isOn;
+    protected boolean isOn;
 
     public Engine(String type, String name, int horsePower) {
         this.type = type;

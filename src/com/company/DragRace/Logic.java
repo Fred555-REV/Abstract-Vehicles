@@ -7,11 +7,5 @@ public class Logic {
         this.cli = cli;
     }
 
-    public void addPlayer(Player player) {
-        if (cli.player == null) {
-            cli.player = player;
-        } else {
-            System.out.println("There is already a player.");
-        }
-    }
+
 }
