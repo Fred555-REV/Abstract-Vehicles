@@ -4,6 +4,10 @@ import java.sql.Time;
 
 public class RaceTest {
     public static void main(String[] args) {
-        CLI.takeAction();
+        CLI.addPlayer();
+        boolean isSettingUp = true;
+        while (isSettingUp) {
+            isSettingUp = CLI.setup();
+        }
     }
 }

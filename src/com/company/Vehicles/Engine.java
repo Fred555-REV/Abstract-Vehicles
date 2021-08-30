@@ -34,6 +34,10 @@ public abstract class Engine {
         return isOn;
     }
 
+    public int getCost() {
+        return cost;
+    }
+
     @Override
     public String toString() {
         return "Engine{" +

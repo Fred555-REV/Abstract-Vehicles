@@ -89,8 +89,36 @@ public abstract class Vehicle {
         System.out.printf("%s has %s passengers\n", model, currentPassengerAmount);
     }
 
+    public void installEngine(Engine engine) {
+        if (this.engine == null) {
+            setEngine(engine);
+        } else {
+            System.out.println("There is already an engine installed.");
+        }
+    }
+
+    public void removeEngine() {
+        if (engine != null) {
+            setEngine(null);
+        } else {
+            System.out.println("There is no engine to remove");
+        }
+    }
+
+    protected void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
     public String getModel() {
         return model;
+    }
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public int getCost() {
+        return cost;
     }
 
     @Override
