@@ -1,4 +1,4 @@
-package com.company.DragRace;
+package com.company.dragrace;
 
 import java.util.Locale;
 

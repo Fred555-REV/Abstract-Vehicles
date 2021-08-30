@@ -1,4 +1,4 @@
-package com.company.Vehicles;
+package com.company.cardealer.abstracts;
 
 public abstract class Engine {
     protected String type;

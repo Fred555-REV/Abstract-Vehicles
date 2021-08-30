@@ -1,17 +1,10 @@
-package com.company.DragRace;
+package com.company.dragrace;
 
-import com.company.Vehicles.Engine;
-import com.company.Vehicles.*;
-import com.company.Vehicles.LandVehicles.Car;
-import com.company.Vehicles.LandVehicles.Motorcycle;
+import com.company.cardealer.abstracts.Engine;
+import com.company.cardealer.abstracts.Vehicle;
 
 import java.time.*;
-import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalAmount;
 import java.util.List;
 import java.util.Scanner;
 
@@ -88,7 +81,7 @@ public class CLI {
         if (player.getVehicle() == null) {
 
         }else {
-            player.sellVehicle(
+            player.sellVehicle();
         }
     }
 

@@ -1,9 +1,12 @@
-package com.company.Vehicles;
+package com.company.cardealer;
+
+import com.company.cardealer.abstracts.Engine;
+import com.company.cardealer.abstracts.Vehicle;
 
 public class CommercialAircraft extends Vehicle {
     private int wingAmount;
 
-    public CommercialAircraft(String manufacturer, String model, String color, Engine engine, int cost,int passengerSpace, int topSpeedInMPH, int weightInOunces, int wingAmount) {
+    public CommercialAircraft(String manufacturer, String model, String color, Engine engine, int cost, int passengerSpace, int topSpeedInMPH, int weightInOunces, int wingAmount) {
         super(manufacturer, model, color, engine, cost, passengerSpace, topSpeedInMPH, weightInOunces);
         this.wingAmount = wingAmount;
     }

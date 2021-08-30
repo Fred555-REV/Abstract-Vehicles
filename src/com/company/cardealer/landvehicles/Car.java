@@ -1,7 +1,6 @@
-package com.company.Vehicles.LandVehicles;
+package com.company.cardealer.landvehicles;
 
-import com.company.Vehicles.Engine;
-import com.company.Vehicles.LandVehicles.LandVehicle;
+import com.company.cardealer.abstracts.Engine;
 
 public class Car extends LandVehicle {
     private boolean isAutomatic;

@@ -1,4 +1,6 @@
-package com.company.Vehicles;
+package com.company.cardealer.engines;
+
+import com.company.cardealer.abstracts.Engine;
 
 public class GasEngine extends Engine {
     public GasEngine(String type, String name, int horsePower) {

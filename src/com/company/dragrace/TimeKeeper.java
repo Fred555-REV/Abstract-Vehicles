@@ -1,9 +1,6 @@
-package com.company.DragRace;
+package com.company.dragrace;
 
 import java.time.*;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAccessor;
 import java.util.Timer;
 import java.util.TimerTask;
 

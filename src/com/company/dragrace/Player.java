@@ -1,7 +1,7 @@
-package com.company.DragRace;
+package com.company.dragrace;
 
-import com.company.Vehicles.Engine;
-import com.company.Vehicles.Vehicle;
+import com.company.cardealer.abstracts.Engine;
+import com.company.cardealer.abstracts.Vehicle;
 
 import java.util.Locale;
 import java.util.Scanner;

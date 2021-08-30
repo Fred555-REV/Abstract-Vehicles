@@ -1,10 +1,4 @@
-package com.company.Vehicles;
-
-import com.company.Vehicles.LandVehicles.Car;
-import com.company.Vehicles.LandVehicles.Motorcycle;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.company.cardealer;
 
 public class TestVehicles {
     public static void main(String[] args) {

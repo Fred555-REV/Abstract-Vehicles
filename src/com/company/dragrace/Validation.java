@@ -1,6 +1,5 @@
-package com.company.DragRace;
+package com.company.dragrace;
 
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
