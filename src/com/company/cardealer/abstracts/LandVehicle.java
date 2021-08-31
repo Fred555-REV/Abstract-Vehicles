@@ -1,4 +1,4 @@
-package com.company.cardealer.landvehicles;
+package com.company.cardealer.abstracts;
 
 import com.company.cardealer.abstracts.Engine;
 import com.company.cardealer.abstracts.Vehicle;
