@@ -16,7 +16,7 @@ public class TimeKeeper {
     }
 
     public static void timePass() {
-        endTime = endTime.plusSeconds(1L);
+        endTime = endTime.plusSeconds(5L);
     }
 
     public static void passClockTime() {

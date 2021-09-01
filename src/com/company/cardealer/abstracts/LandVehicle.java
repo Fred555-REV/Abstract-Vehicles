@@ -1,8 +1,5 @@
 package com.company.cardealer.abstracts;
 
-import com.company.cardealer.abstracts.Engine;
-import com.company.cardealer.abstracts.Vehicle;
-
 public abstract class LandVehicle extends Vehicle {
     protected int wheelAmount;
 
