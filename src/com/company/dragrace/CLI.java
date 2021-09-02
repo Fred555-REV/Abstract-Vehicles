@@ -193,6 +193,7 @@ public class CLI {
         if (player.getHealth() <= 0) {
             System.out.println("Y̵̙͕̫̒O̶͉̬̠̔Ụ̵͋ ̷͈͝D̴̥̱̦̀̇I̷͖͒̊̕E̷̛̙D");
         }
+        System.out.println("You now have " + player.getHealth() + "health");
         displayRaceResult();
     }
 
@@ -214,11 +215,11 @@ public class CLI {
             } else if (penalty > 10) {
                 penalty = 2;
             }
-            System.out.printf("Because you missed the target distance by %s units %s seconds have been added to your time."
+            System.out.printf("Because you missed the target distance by %s units %s seconds have been added to your time.\n"
                     , penalty, penalty);
         }
         if (player.getHealth() < 100) {
-            System.out.printf("Because you took %s damage from jumping out of the vehicle %s seconds have been added to your time.",
+            System.out.printf("Because you took %s damage from jumping out of the vehicle %s seconds have been added to your time.\n",
                     player.getVehicle().getCurrentSpeed(), (100 - player.getHealth()) / 10);
             penalty += (100 - player.getHealth()) / 10;
         }
