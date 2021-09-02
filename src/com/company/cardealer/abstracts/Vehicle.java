@@ -131,7 +131,7 @@ public abstract class Vehicle {
     }
 
     public void coast() {
-        currentSpeed -= (int) Math.round((currentSpeed / 10.0) * (weightInOunces / 1000.0));
+        currentSpeed -= (int) Math.round((currentSpeed / (10.0 * (weightInOunces / 1000.0))));
     }
 
     protected void setEngine(Engine engine) {
