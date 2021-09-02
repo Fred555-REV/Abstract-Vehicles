@@ -10,6 +10,7 @@ public abstract class Vehicle {
     protected int topSpeedInMPH;
     protected int weightInOunces;
     protected int currentPassengerAmount;
+    protected int acceleration;
 
     public Vehicle(String manufacturer, String model, String color, Engine engine,
                    int cost, int passengerSpace, int topSpeedInMPH, int weightInOunces) {
@@ -92,6 +93,7 @@ public abstract class Vehicle {
     public void installEngine(Engine engine) {
         if (this.engine == null) {
             setEngine(engine);
+            acceleration = (int) Math.round(engine.getHorsePower() * engine.getAmount() / (weightInOunces / 1000.0));
         } else {
             System.out.println("There is already an engine installed.");
         }
@@ -119,6 +121,30 @@ public abstract class Vehicle {
 
     public int getCost() {
         return cost;
+    }
+
+    public int getAcceleration() {
+        return acceleration;
+    }
+
+    public void displayVehicleSpecs() {
+        System.out.println("Vehicle{" +
+                "\nmodel='" + model + '\'' +
+                ", \ncolor='" + color + '\'' +
+                ", \ncost=" + cost +
+                ", \ntopSpeed=" + topSpeedInMPH +
+                ", \nweightInPounds=" + (weightInOunces / 16.0)
+        );
+        if (engine != null) {
+            System.out.println("Engine{" +
+                    "\ntype='" + engine.getType() + '\'' +
+                    ", \nname='" + engine.getName() + '\'' +
+                    ", \nhorsePower=" + engine.getHorsePower() +
+                    ", \namount=" + engine.getAmount() +
+                    ", \ncost=" + cost +
+                    "}"
+            );
+        }
     }
 
     @Override

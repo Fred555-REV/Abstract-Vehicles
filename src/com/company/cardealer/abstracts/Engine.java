@@ -38,6 +38,22 @@ public abstract class Engine {
         return cost;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getHorsePower() {
+        return horsePower;
+    }
+
     @Override
     public String toString() {
         return "Engine{" +

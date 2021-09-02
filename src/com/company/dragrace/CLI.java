@@ -21,13 +21,13 @@ public class CLI {
     protected static final List<Vehicle> vehicles = List.of(
             new Car("Honda", "Civic", "Blue",
                     null,
-                    31_000, 5, 150, 34_400, true),
+                    31_000, 5, 200, 34_400, true),
             new Car("SR3", "Raycaster", "White",
                     null,
-                    40_000, 2, 200, 25_000, false),
+                    40_000, 2, 250, 25_000, false),
             new Motorcycle("Harley Davidson", "Softail Slim", "Cruiser", "Midnight Crimson",
                     null,
-                    16_000, 2, 200, 10_737)
+                    16_000, 2, 150, 10_737)
 //            new Motorcycle()
     );
     protected static final List<Engine> engines = List.of(
@@ -58,16 +58,20 @@ public class CLI {
         System.out.println("(3) Start Race");
 
 
-        int selection = Validation.inputInt("What Will you get?", 1, 5);
+        int selection = Validation.inputInt("What will you get?", 1, 3);
         switch (selection) {
             case 1:
-                System.out.println(vehicles);
+                for (Vehicle vehicle : vehicles) {
+                    vehicle.displayVehicleSpecs();
+                }
                 chooseVehicle();
+                player.getVehicle().displayVehicleSpecs();
                 break;
             case 2:
                 System.out.println(engines);
                 if (player.getVehicle() == null) {
                     chooseEngine();
+                    player.getVehicle().displayVehicleSpecs();
                 } else {
                     System.out.println("No vehicle to install engine with");
                 }
@@ -75,8 +79,7 @@ public class CLI {
             case 3:
                 System.out.println("This is your Vehicle");
                 //TODO display limited stats of vehicle and engine
-                player.getVehicle();
-                player.getEngine();
+                player.getVehicle().displayVehicleSpecs();
                 player.getVehicle().displayVehicle();
                 return false;
             default:

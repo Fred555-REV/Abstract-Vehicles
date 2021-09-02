@@ -18,6 +18,7 @@ public class Player {
         this.name = name;
         this.color = color;
         score = 0;
+        balance = 50_000;
     }
 
     protected void buyVehicle(Vehicle vehicle) {
