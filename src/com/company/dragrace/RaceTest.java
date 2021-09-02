@@ -2,14 +2,10 @@ package com.company.dragrace;
 
 public class RaceTest {
     public static void main(String[] args) {
-        CLI.addPlayer();
-        boolean isSettingUp = true;
-        while (isSettingUp) {
-            isSettingUp = CLI.setup();
-        }
+        CLI cli = new CLI();
+        cli.addPlayer();
+        while (cli.setup());
+        while(cli.controlVehicle());
 
-        while (true) {
-            CLI.controlVehicle();
-        }
     }
 }

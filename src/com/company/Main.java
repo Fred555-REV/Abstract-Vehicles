@@ -1,9 +1,14 @@
 package com.company;
 
+import com.company.dragrace.CLI;
+
 public class Main {
 
     public static void main(String[] args) {
-
+        CLI cli = new CLI();
+        cli.addPlayer();
+        while (cli.setup());
+        while (cli.controlVehicle());
 
     }
 //        Car honda = new Car(

@@ -3,6 +3,7 @@ package com.company.dragrace;
 import com.company.cardealer.abstracts.Engine;
 import com.company.cardealer.abstracts.Vehicle;
 
+import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -63,6 +64,11 @@ public class Player {
 
     }
 
+    public void displayBalance() {
+        System.out.printf("%s%s has %s%s", Color.getColor(this), getName(),
+                NumberFormat.getCurrencyInstance().format(getBalance()), Color.RESET);
+    }
+
     public Vehicle getVehicle() {
         return vehicle;
     }
@@ -77,5 +83,9 @@ public class Player {
 
     public int getBalance() {
         return balance;
+    }
+
+    public String getName() {
+        return name;
     }
 }

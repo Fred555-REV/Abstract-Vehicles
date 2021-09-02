@@ -7,14 +7,6 @@ import java.util.TimerTask;
 public class TimeKeeper {
     protected static Clock clock = Clock.system(ZoneId.systemDefault());
     protected static LocalDateTime endTime = LocalDateTime.now();
-    private Timer timer;
-    private TimerTask task;
-
-    public TimeKeeper() {
-        this.timer = new Timer();
-
-    }
-
     public static void timePass() {
         endTime = endTime.plusSeconds(5L);
     }
@@ -25,7 +17,7 @@ public class TimeKeeper {
 
     }
 
-    public Clock getClock() {
+    public static Clock getClock() {
         return clock;
     }
 }
