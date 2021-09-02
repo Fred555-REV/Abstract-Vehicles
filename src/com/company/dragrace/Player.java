@@ -5,6 +5,7 @@ import com.company.cardealer.abstracts.Vehicle;
 
 import java.text.NumberFormat;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Player {
@@ -30,8 +31,8 @@ public class Player {
     }
 
     protected void sellVehicle() {
-        if (vehicle != null) {
-            if (vehicle.getEngine() == null) {
+        if (Objects.nonNull(vehicle)) {
+            if (Objects.isNull(vehicle.getEngine())) {
                 balance += vehicle.getCost();
                 vehicle = null;
             } else {
@@ -66,7 +67,7 @@ public class Player {
     }
 
     public void displayBalance() {
-        System.out.printf("%s%s has %s%s", Color.getColor(this), getName(),
+        System.out.printf("%s%s has %s%s\n", Color.getColor(this), getName(),
                 NumberFormat.getCurrencyInstance().format(getBalance()), Color.RESET);
     }
 

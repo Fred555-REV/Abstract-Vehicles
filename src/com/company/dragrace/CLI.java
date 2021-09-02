@@ -7,25 +7,26 @@ import com.company.cardealer.engines.GasEngine;
 import com.company.cardealer.landvehicles.Car;
 import com.company.cardealer.landvehicles.Motorcycle;
 
-import java.text.NumberFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class CLI {
     private static final Scanner scan = new Scanner(System.in);
     protected static final LocalDateTime initialTime = LocalDateTime.now();
     protected Player player;
-    private int targetDistance;
+    private final int targetDistance;
+    private int distanceFromTarget;
     protected static final List<Vehicle> vehicles = List.of(
             new Car("Honda", "Civic", "Blue",
                     null,
                     31_000, 5, 200, 34_400, true),
-            new Car("SR3", "Raycaster", "White",
+            new Car("SR3", "Raycaster", "Yellow",
                     null,
                     40_000, 2, 250, 25_000, false),
-            new Motorcycle("Harley Davidson", "Softail Slim", "Cruiser", "Midnight Crimson",
+            new Motorcycle("Harley Davidson", "Softail Slim", "Cruiser", "Red",
                     null,
                     16_000, 2, 150, 10_737)
 //            new Motorcycle()
@@ -37,6 +38,8 @@ public class CLI {
     );
 
     public CLI() {
+        this.targetDistance = 1000;
+        this.distanceFromTarget = 1000;
     }
 
     public void addPlayer() {
@@ -57,31 +60,32 @@ public class CLI {
         System.out.println("(2) buy or sell an engine");
         System.out.println("(3) Start Race");
 
-
-        int selection = Validation.inputInt("What will you get?", 1, 3);
+        int selection = Validation.inputInt("What will you do?", 1, 3);
         switch (selection) {
             case 1:
-                for (Vehicle vehicle : vehicles) {
-                    vehicle.displayVehicleSpecs();
-                }
                 chooseVehicle();
-                player.getVehicle().displayVehicleSpecs();
                 break;
             case 2:
-                System.out.println(engines);
-                if (player.getVehicle() == null) {
+                if (Objects.nonNull(player.getVehicle())) {
                     chooseEngine();
-                    player.getVehicle().displayVehicleSpecs();
                 } else {
                     System.out.println("No vehicle to install engine with");
                 }
                 break;
             case 3:
-                System.out.println("This is your Vehicle");
                 //TODO display limited stats of vehicle and engine
-                player.getVehicle().displayVehicleSpecs();
-                player.getVehicle().displayVehicle();
-                return false;
+
+                if (Objects.isNull(player.getVehicle())) {
+                    System.out.println("There is no vehicle");
+                } else if (Objects.isNull(player.getEngine())) {
+                    System.out.println("There is no engine");
+                } else {
+                    System.out.println("This is your Vehicle");
+                    player.getVehicle().displayVehicleSpecs();
+                    player.getVehicle().displayVehicle();
+                    return false;
+                }
+
             default:
                 System.out.println("Invalid Selection");
                 break;
@@ -91,31 +95,38 @@ public class CLI {
 
     public void chooseVehicle() {
         //TODO if null buy else sell
-        player.displayBalance();
-        if (player.getVehicle() == null) {
-            System.out.println(vehicles);
+        if (Objects.isNull(player.getVehicle())) {
+            player.displayBalance();
+            for (Vehicle vehicle : vehicles) {
+                vehicle.displayVehicleSpecs();
+            }
             int selection = Validation.inputInt("Choose Vehicle 1-" + vehicles.size(), 1, vehicles.size());
             player.buyVehicle(vehicles.get(selection - 1));
 
         } else {
             player.sellVehicle();
+            System.out.println("Vehicle Sold");
+            player.displayBalance();
         }
     }
 
     public void chooseEngine() {
         //TODO if null buy else sell
-        player.displayBalance();
-        if (player.getEngine() == null) {
+        if (Objects.isNull(player.getEngine())) {
+            player.displayBalance();
             System.out.println(engines);
             int selection = Validation.inputInt("Select Engine 1-" + engines.size(), 1, engines.size());
             player.buyEngine(engines.get(selection - 1));
         } else {
             player.sellEngine();
+            System.out.println("Engine Sold");
+            player.displayBalance();
         }
 
     }
 
     public boolean controlVehicle() {
+        displayCurrentTime();
         System.out.println("Choose an action");
         System.out.println("(1) Accelerate");
         System.out.println("(2) Decelerate");
@@ -162,11 +173,17 @@ public class CLI {
 
     }
 
-    public void display() {
-        System.out.println();
+    public void displayHUD() {
+        System.out.printf("%s\nTarget Distance:\t%s\nDistance From Target\t%s\nCurrent Speed\t",
+                getCurrentTime(), targetDistance, distanceFromTarget, player.getVehicle().getCurrentSpeed()
+        );
     }
 
-    public void displayResult() {
+    public void displayRaceResult() {
+
+    }
+
+    public static void setCurrentTime() {
 
     }
 
@@ -176,6 +193,10 @@ public class CLI {
 
     public static void displayCurrentTime() {
         System.out.println(TimeKeeper.endTime.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+    }
+
+    public String getCurrentTime() {
+        return TimeKeeper.endTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
     }
 
     public static void displayTotalTime() {

@@ -62,6 +62,6 @@ public abstract class Engine {
                 ", horsePower=" + horsePower +
                 ", amount=" + amount +
                 ", cost=" + cost +
-                "}";
+                "}\n";
     }
 }

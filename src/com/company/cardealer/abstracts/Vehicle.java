@@ -1,5 +1,9 @@
 package com.company.cardealer.abstracts;
 
+import com.company.dragrace.Color;
+
+import java.util.Objects;
+
 public abstract class Vehicle {
     protected String manufacturer;
     protected String model;
@@ -11,6 +15,7 @@ public abstract class Vehicle {
     protected int weightInOunces;
     protected int currentPassengerAmount;
     protected int acceleration;
+    protected int currentSpeed;
 
     public Vehicle(String manufacturer, String model, String color, Engine engine,
                    int cost, int passengerSpace, int topSpeedInMPH, int weightInOunces) {
@@ -23,6 +28,8 @@ public abstract class Vehicle {
         this.topSpeedInMPH = topSpeedInMPH;
         this.weightInOunces = weightInOunces;
         currentPassengerAmount = 0;
+        acceleration = 0;
+        currentSpeed = 0;
 
     }
 
@@ -127,15 +134,20 @@ public abstract class Vehicle {
         return acceleration;
     }
 
+    public int getCurrentSpeed() {
+        return currentSpeed;
+    }
+
     public void displayVehicleSpecs() {
-        System.out.println("Vehicle{" +
-                "\nmodel='" + model + '\'' +
-                ", \ncolor='" + color + '\'' +
-                ", \ncost=" + cost +
-                ", \ntopSpeed=" + topSpeedInMPH +
-                ", \nweightInPounds=" + (weightInOunces / 16.0)
+        System.out.println(Color.getColor(color) + "Vehicle{" +
+                "model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                ", cost=" + cost +
+                ", topSpeed=" + topSpeedInMPH +
+                ", weightInPounds=" + (weightInOunces / 16.0) +
+                "\n"
         );
-        if (engine != null) {
+        if (Objects.nonNull(engine)) {
             System.out.println("Engine{" +
                     "\ntype='" + engine.getType() + '\'' +
                     ", \nname='" + engine.getName() + '\'' +
@@ -145,11 +157,13 @@ public abstract class Vehicle {
                     "}"
             );
         }
+        System.out.print(Color.RESET);
+
     }
 
     @Override
     public String toString() {
-        return "\nmanufacturer='" + manufacturer + '\'' +
+        return Color.getColor(color) + "\nmanufacturer='" + manufacturer + '\'' +
                 ", \nmodel='" + model + '\'' +
                 ", \ncolor='" + color + '\'' +
                 ", \n" + engine +
@@ -157,7 +171,7 @@ public abstract class Vehicle {
                 ", \ncurrentPassengerAmount=" + currentPassengerAmount +
                 ", \npassengerSpace=" + passengerSpace +
                 ", \ntopSpeed=" + topSpeedInMPH +
-                ", \nweightInOunces=" + weightInOunces;
+                ", \nweightInOunces=" + weightInOunces + Color.RESET;
     }
 
 

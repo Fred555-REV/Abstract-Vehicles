@@ -142,12 +142,26 @@ public enum Color {
             case "MAGENTA":
                 return MAGENTA;
         }
-//        Enum<Color> colorEnum = (Enum<Color>) player.color.toUpperCase(Locale.ROOT);
-//        for(Color color:Color.values()){
-//            if(player.color.toUpperCase(Locale.ROOT).equalsIgnoreCase(color.code)){
-//                return color;
-//            }
-//        }
+        return Color.RESET;
+    }
+
+    public static Object getColor(String color) {
+        switch (color.toUpperCase(Locale.ROOT)) {
+            case "RED":
+                return RED;
+            case "ORANGE":
+                return ORANGE;
+            case "BLUE":
+                return BLUE;
+            case "GREEN":
+                return GREEN;
+            case "YELLOW":
+                return YELLOW;
+            case "CYAN":
+                return CYAN;
+            case "MAGENTA":
+                return MAGENTA;
+        }
         return Color.RESET;
     }
 
