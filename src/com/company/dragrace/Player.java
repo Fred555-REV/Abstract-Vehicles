@@ -12,14 +12,21 @@ public class Player {
     private String name;
     protected String color;
     private Vehicle vehicle;
-    private int score;
+    protected int health;
     private int balance;
 
     public Player(String name, String color) {
         this.name = name;
         this.color = color;
-        score = 0;
+        health = 100;
         balance = 50_000;
+    }
+
+    protected void takeDamage(int amount) {
+        health -= amount;
+        if (health < 0) {
+            health = 0;
+        }
     }
 
     protected void buyVehicle(Vehicle vehicle) {
@@ -79,8 +86,8 @@ public class Player {
         return vehicle.getEngine();
     }
 
-    public int getScore() {
-        return score;
+    public int getHealth() {
+        return health;
     }
 
     public int getBalance() {

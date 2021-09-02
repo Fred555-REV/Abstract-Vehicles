@@ -2,6 +2,7 @@ package com.company.cardealer.abstracts;
 
 import com.company.dragrace.Color;
 
+import javax.swing.*;
 import java.util.Objects;
 
 public abstract class Vehicle {
@@ -37,7 +38,7 @@ public abstract class Vehicle {
         engine.turnOnOff();
     }
 
-    public void getPowerStatus() {
+    public void displayPowerStatus() {
         if (engine.getPowerStatus()) {
             System.out.println(model + "'s Engine is on");
         } else {
@@ -112,6 +113,25 @@ public abstract class Vehicle {
         } else {
             System.out.println("There is no engine to remove");
         }
+    }
+
+    public void accelerate() {
+        currentSpeed += acceleration;
+        if (currentSpeed > topSpeedInMPH) {
+            currentSpeed = topSpeedInMPH;
+        }
+    }
+
+    public void decelerate() {
+        int deceleration = (int) Math.round((topSpeedInMPH - acceleration) / (weightInOunces / 1000.0));
+        currentSpeed -= deceleration;
+        if (currentSpeed < 0) {
+            currentSpeed = 0;
+        }
+    }
+
+    public void coast() {
+        currentSpeed -= (int) Math.round((currentSpeed / 10.0) * (weightInOunces / 1000.0));
     }
 
     protected void setEngine(Engine engine) {
