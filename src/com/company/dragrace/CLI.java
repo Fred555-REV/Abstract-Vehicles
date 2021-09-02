@@ -150,6 +150,7 @@ public class CLI {
                 coast();
                 break;
             case 4:
+                System.out.println(Color.getColor(player));
                 jumpOut();
                 return false;
             default:
@@ -157,17 +158,14 @@ public class CLI {
                 return true;
         }
         if (distanceFromTarget < -100) {
-        System.out.println(Color.BLACK);
+            System.out.println(Color.BLACK);
             System.out.println("Y̷̬͎͑Ô̶̡͇̬̄͝Ṵ̸̰͚͑͒̕ ̵̨͔͎̇̀͂V̴̞̱̀A̴̝̮͊̆͌͜N̷̬̰̾̔̿Ȉ̷̥̣Ṡ̵͍H̸̡̖͚̪̅́");
             return false;
         } else if (distanceFromTarget < 70) {
-        System.out.println(Color.BLACK);
+            System.out.println(Color.BLACK);
             System.out.println("The end is near...");
-        } else if (player.getVehicle().getCurrentSpeed() == 0) {
-        System.out.println(Color.getColor(player));
-            displayRaceResult();
-            return false;
         }
+
         System.out.println(Color.RESET);
         distanceFromTarget -= player.getVehicle().getCurrentSpeed();
         TimeKeeper.timePass();
