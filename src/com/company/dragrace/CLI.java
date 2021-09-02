@@ -137,7 +137,7 @@ public class CLI {
         System.out.println("(2) Decelerate");
         System.out.println("(3) Coast");
         System.out.println("(4) Jump out the vehicle");
-
+        System.out.println(Color.getColor(player));
         int action = Validation.inputInt("Select action");
         switch (action) {
             case 1:
@@ -157,14 +157,18 @@ public class CLI {
                 return true;
         }
         if (distanceFromTarget < -100) {
+        System.out.println(Color.BLACK);
             System.out.println("Y̷̬͎͑Ô̶̡͇̬̄͝Ṵ̸̰͚͑͒̕ ̵̨͔͎̇̀͂V̴̞̱̀A̴̝̮͊̆͌͜N̷̬̰̾̔̿Ȉ̷̥̣Ṡ̵͍H̸̡̖͚̪̅́");
             return false;
-        } else if (distanceFromTarget < 50) {
-            System.out.println("The end is near");
+        } else if (distanceFromTarget < 70) {
+        System.out.println(Color.BLACK);
+            System.out.println("The end is near...");
         } else if (player.getVehicle().getCurrentSpeed() == 0) {
+        System.out.println(Color.getColor(player));
             displayRaceResult();
             return false;
         }
+        System.out.println(Color.RESET);
         distanceFromTarget -= player.getVehicle().getCurrentSpeed();
         TimeKeeper.timePass();
         return true;
@@ -214,9 +218,13 @@ public class CLI {
                 penalty = 3;
             } else if (penalty > 10) {
                 penalty = 2;
+            } else if (penalty > 2) {
+                penalty = 1;
+            } else {
+                penalty = 0;
             }
             System.out.printf("Because you missed the target distance by %s units %s seconds have been added to your time.\n"
-                    , penalty, penalty);
+                    , Math.abs(distanceFromTarget), penalty);
         }
         if (player.getHealth() < 100) {
             System.out.printf("Because you took %s damage from jumping out of the vehicle %s seconds have been added to your time.\n",

@@ -8,7 +8,7 @@ public class TimeKeeper {
     protected static Clock clock = Clock.system(ZoneId.systemDefault());
     protected static LocalDateTime endTime = LocalDateTime.now();
     public static void timePass() {
-        endTime = endTime.plusSeconds(5L);
+        endTime = endTime.plusSeconds(2L);
     }
 
     public static void passClockTime() {
