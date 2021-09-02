@@ -188,9 +188,10 @@ public class CLI {
 
     public void jumpOut() {
         player.takeDamage(player.getVehicle().getCurrentSpeed());
-        System.out.printf("You jump out of %s going %s mph");
+        System.out.printf("You jump out of %s going %s mph\n",
+                player.getVehicle(), player.getVehicle().getCurrentSpeed());
         if (player.getHealth() <= 0) {
-            System.out.println("Y̵̙͕̫̒O̶͉̬̠̔Ụ̵͋ ̷͈͝D̴̥̱̦̀̇I̷͖͒̊̕E̷̛̙D"̶);
+            System.out.println("Y̵̙͕̫̒O̶͉̬̠̔Ụ̵͋ ̷͈͝D̴̥̱̦̀̇I̷͖͒̊̕E̷̛̙D");
         }
         displayRaceResult();
     }
@@ -218,8 +219,8 @@ public class CLI {
         }
         if (player.getHealth() < 100) {
             System.out.printf("Because you took %s damage from jumping out of the vehicle %s seconds have been added to your time.",
-                    player.getVehicle().getCurrentSpeed(), (100-player.getHealth())/10);
-            penalty += (100 - player.getHealth())/10;
+                    player.getVehicle().getCurrentSpeed(), (100 - player.getHealth()) / 10);
+            penalty += (100 - player.getHealth()) / 10;
         }
         System.out.println("Your final score was " + (getTotalTime() + penalty));
         if (player.getHealth() == 0) {
