@@ -189,7 +189,7 @@ public class CLI {
     public void jumpOut() {
         player.takeDamage(player.getVehicle().getCurrentSpeed());
         System.out.printf("You jump out of %s going %s mph\n",
-                player.getVehicle(), player.getVehicle().getCurrentSpeed());
+                player.getVehicle().getModel(), player.getVehicle().getCurrentSpeed());
         if (player.getHealth() <= 0) {
             System.out.println("Y̵̙͕̫̒O̶͉̬̠̔Ụ̵͋ ̷͈͝D̴̥̱̦̀̇I̷͖͒̊̕E̷̛̙D");
         }
@@ -247,9 +247,9 @@ public class CLI {
     }
 
     public static void displayTotalTime() {
-        System.out.println("Initial Time" + initialTime.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
-        System.out.println("End Time" + TimeKeeper.endTime.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
-        System.out.println("You took " + Duration.between(initialTime, TimeKeeper.endTime).getSeconds() + " seconds");
+        System.out.println("Initial Time:\t" + initialTime.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+        System.out.println("End Time:    \t" + TimeKeeper.endTime.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+        System.out.println("You took:    \t" + Duration.between(initialTime, TimeKeeper.endTime).getSeconds() + " seconds");
     }
 
     public static long getTotalTime() {
