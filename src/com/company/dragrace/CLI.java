@@ -197,7 +197,7 @@ public class CLI {
         if (player.getHealth() <= 0) {
             System.out.println("Y̵̙͕̫̒O̶͉̬̠̔Ụ̵͋ ̷͈͝D̴̥̱̦̀̇I̷͖͒̊̕E̷̛̙D");
         }
-        System.out.println("You now have " + player.getHealth() + "health");
+        System.out.println("You now have " + player.getHealth() + " health");
         displayRaceResult();
     }
 
