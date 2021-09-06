@@ -40,6 +40,7 @@ public class CLI {
     public CLI() {
         this.targetDistance = 1000;
         this.distanceFromTarget = 1000;
+        addPlayer();
     }
 
     public void addPlayer() {
