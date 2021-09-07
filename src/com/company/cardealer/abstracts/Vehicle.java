@@ -101,7 +101,6 @@ public abstract class Vehicle {
     public void installEngine(Engine engine) {
         if (this.engine == null) {
             setEngine(engine);
-            acceleration = (int) Math.round(engine.getHorsePower() * engine.getAmount() / (weightInOunces / 1000.0));
         } else {
             System.out.println("There is already an engine installed.");
         }
@@ -116,6 +115,7 @@ public abstract class Vehicle {
     }
 
     public void accelerate() {
+        acceleration = (int) Math.round(engine.getHorsePower() * engine.getAmount() / (weightInOunces / 1000.0));
         currentSpeed += acceleration;
         if (currentSpeed > topSpeedInMPH) {
             currentSpeed = topSpeedInMPH;
@@ -131,7 +131,11 @@ public abstract class Vehicle {
     }
 
     public void coast() {
-        currentSpeed -= (int) Math.round((currentSpeed / (weightInOunces / 1000.0)));
+        int coast = (int) Math.round((currentSpeed / (weightInOunces / 1000.0)));
+        currentSpeed -= coast;
+        if (currentSpeed < 0) {
+            currentSpeed = 0;
+        }
     }
 
     protected void setEngine(Engine engine) {

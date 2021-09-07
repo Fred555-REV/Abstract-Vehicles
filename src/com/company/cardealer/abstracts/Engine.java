@@ -22,7 +22,7 @@ public abstract class Engine {
         this.name = name;
         this.horsePower = horsePower;
         this.amount = amount;
-        cost = (horsePower*amount);
+        cost = horsePower * amount;
         isOn = false;
     }
 

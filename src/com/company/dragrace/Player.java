@@ -2,6 +2,10 @@ package com.company.dragrace;
 
 import com.company.cardealer.abstracts.Engine;
 import com.company.cardealer.abstracts.Vehicle;
+import com.company.cardealer.airvehicles.CommercialAircraft;
+import com.company.cardealer.interfaces.AirVehicles;
+import com.company.cardealer.landvehicles.Car;
+import com.company.cardealer.landvehicles.Motorcycle;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -22,7 +26,7 @@ public class Player {
         balance = 50_000;
     }
 
-    protected void takeDamage(int amount) {
+    public void takeDamage(int amount) {
         health -= amount;
         if (health < 0) {
             health = 0;
@@ -30,9 +34,11 @@ public class Player {
     }
 
     protected void buyVehicle(Vehicle vehicle) {
-        if (vehicle.getCost() < balance) {
+        if (vehicle.getCost() <= balance) {
             balance -= vehicle.getCost();
             this.vehicle = vehicle;
+        } else {
+            System.out.println(Color.RED + "Not Enough Money" + Color.RESET);
         }
 
     }
@@ -59,11 +65,11 @@ public class Player {
     }
 
     protected void buyEngine(Engine engine) {
-        if (engine.getCost() < balance) {
+        if (engine.getCost() <= balance) {
             balance -= vehicle.getCost();
             this.vehicle.installEngine(engine);
         } else {
-            System.out.println("Not enough money.");
+            System.out.println(Color.RED + "Not Enough Money" + Color.RESET);
         }
     }
 

@@ -23,6 +23,34 @@ public class CommercialAircraft extends Vehicle {
     }
 
     @Override
+    public void accelerate() {
+        acceleration = (int) Math.round(engine.getHorsePower() * engine.getAmount() / (weightInOunces / 10000.0));
+        currentSpeed += acceleration;
+        if (currentSpeed > topSpeedInMPH) {
+            currentSpeed = topSpeedInMPH;
+        }
+    }
+
+    @Override
+    public void decelerate() {
+        int deceleration = (int) Math.round((engine.getHorsePower() + topSpeedInMPH + acceleration) / (weightInOunces / 10000.0));
+        currentSpeed -= deceleration;
+        if (currentSpeed < 0) {
+            currentSpeed = 0;
+        }
+    }
+
+
+    @Override
+    public void coast() {
+        int coast = (int) Math.round((currentSpeed / (weightInOunces / 10000.0)));
+        currentSpeed -= coast;
+        if (currentSpeed < 0) {
+            currentSpeed = 0;
+        }
+    }
+
+    @Override
     public void displayWeight() {
         System.out.printf("%s weighs %s tons\n", model, (weightInOunces / (16 * 2000)));
     }
