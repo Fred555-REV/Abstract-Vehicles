@@ -83,7 +83,7 @@ public class English implements Language {
     @Override
     public List<String> END() {
         return List.of(
-                "YOU VANISH",
+                "YOU DIE",
                 "The end is near..."
         );
     }
@@ -91,5 +91,14 @@ public class English implements Language {
     @Override
     public String HUD() {
         return "\nTarget Distance:\t%s\nDistance From Target\t%s\nCurrent Speed\t%s\n";
+    }
+
+    @Override
+    public List<String> TIME() {
+        return List.of(
+                "Initial Time:\t",
+                "End Time:    \t",
+                "You took:    \t"
+        );
     }
 }

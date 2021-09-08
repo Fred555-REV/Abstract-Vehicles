@@ -4,12 +4,20 @@ import com.company.cardealer.abstracts.Engine;
 import com.company.cardealer.abstracts.Vehicle;
 import com.company.cardealer.airvehicles.CommercialAircraft;
 import com.company.cardealer.engines.GasEngine;
+import com.company.cardealer.interfaces.languages.English;
+import com.company.cardealer.interfaces.languages.Language;
 import com.company.dragrace.Color;
 import com.company.dragrace.Player;
 
 import java.util.List;
+import java.util.spi.LocaleNameProvider;
 
 public class AirVehicles implements VehicleType {
+    private Language lang;
+    public AirVehicles() {
+        lang = new English();
+    }
+
     @Override
     public List<Vehicle> vehicles() {
         return List.of(
@@ -40,8 +48,8 @@ public class AirVehicles implements VehicleType {
         System.out.printf("You jump out of a %s with a parachute going %s knots\n",
                 player.getVehicle().getModel(), player.getVehicle().getCurrentSpeed() * 0.868976);
         if (player.getHealth() <= 0) {
-            System.out.print(Color.getColor("RED"));
-            System.out.println("Y̵̙͕̫̒O̶͉̬̠̔Ụ̵͋ ̷͈͝D̴̥̱̦̀̇I̷͖͒̊̕E̷̛̙D");
+            System.out.print(Color.RED);
+            System.out.println(lang.END().get(0));
             System.out.print(Color.RESET);
         }
         System.out.println("You now have " + player.getHealth() + " health");
@@ -72,9 +80,6 @@ public class AirVehicles implements VehicleType {
             penalty += (100 - player.getHealth()) / 10;
         }
         System.out.println("Your final score was " + (totalTime + penalty));
-        if (player.getHealth() == 0) {
-            System.out.println("RIP");
-        }
 
     }
 }

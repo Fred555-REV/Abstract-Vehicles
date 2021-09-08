@@ -257,10 +257,10 @@ public class CLI {
         return TimeKeeper.endTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
     }
 
-    public static void displayTotalTime() {
-        System.out.println("Initial Time:\t" + initialTime.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
-        System.out.println("End Time:    \t" + TimeKeeper.endTime.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
-        System.out.println("You took:    \t" + Duration.between(initialTime, TimeKeeper.endTime).getSeconds() + " seconds");
+    public void displayTotalTime() {
+        System.out.println(lang.TIME().get(0) + initialTime.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+        System.out.println(lang.TIME().get(1) + TimeKeeper.endTime.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+        System.out.println(lang.TIME().get(2) + Duration.between(initialTime, TimeKeeper.endTime).getSeconds() + " seconds");
     }
 
     public static long getTotalTime() {

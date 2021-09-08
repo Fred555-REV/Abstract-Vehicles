@@ -16,4 +16,5 @@ public interface Language {
     List<String> CONTROL_MENU();
     List<String> END();
     String HUD();
+    List<String> TIME();
 }
