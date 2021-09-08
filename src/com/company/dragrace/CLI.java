@@ -2,6 +2,8 @@ package com.company.dragrace;
 
 import com.company.cardealer.abstracts.Vehicle;
 import com.company.cardealer.airvehicles.CommercialAircraft;
+import com.company.cardealer.interfaces.languages.English;
+import com.company.cardealer.interfaces.languages.Language;
 import com.company.cardealer.interfaces.vehicletypes.AirVehicles;
 import com.company.cardealer.interfaces.vehicletypes.LandVehicles;
 import com.company.cardealer.interfaces.vehicletypes.VehicleType;
@@ -17,35 +19,20 @@ public class CLI {
     protected Player player;
     private int targetDistance;
     private int distanceFromTarget;
-//    protected static final List<Vehicle> vehicleType.vehicles() = List.of(
-//            new Car("Honda", "Civic", "Blue",
-//                    null,
-//                    31_000, 5, 200, 34_400, true),
-//            new Car("SR3", "Raycaster", "Yellow",
-//                    null,
-//                    40_000, 2, 250, 25_000, false),
-//            new Motorcycle("Harley Davidson", "Softail Slim", "Cruiser", "Red",
-//                    null,
-//                    16_000, 2, 150, 10_737)
-////            new Motorcycle()
-//    );
-//    protected static final List<Engine> vehicleType.engines() = List.of(
-//            new GasEngine("2.0 L 4-cylinder", "Civic", 212),
-//            new GasEngine("4.0 L 6-cylinder", "RayCaster", 300),
-//            new ElectricEngine("V-Twin", "Milwaukee-Eight 107", 77)
-//    );
-
     private VehicleType vehicleType;
-
+    private Language lang;
 
     public CLI() {
 
         addPlayer();
         setVehicleType();
+//        TODO TEMPORARY LANGUAGE MAKE setLang() method
+        lang = new English();
     }
 
     private void setVehicleType() {
-        int choice = Validation.inputInt("(1) Air Vehicles\n(2) Land Vehicles", 1, 2);
+//        VEHICLETYPE_PROMPT
+        int choice = Validation.inputInt(lang.VEHICLETYPE_PROMPT(), 1, 2);
         switch (choice) {
             case 1:
                 vehicleType = new AirVehicles();
@@ -62,23 +49,19 @@ public class CLI {
 
     public void addPlayer() {
         if (this.player == null) {
-            System.out.println("Enter Name");
+            System.out.println(lang.ENTER_PROMPT() + lang.PLAYER_FIELDS().get(0));
             String name = scan.next();
-            System.out.println("Enter Color");
+            System.out.println(lang.ENTER_PROMPT() + lang.PLAYER_FIELDS().get(1));
             String color = scan.next();
             this.player = new Player(name, color);
         } else {
-            System.out.println("There is already a player.");
+            this.player = null;
         }
     }
 
     public boolean setup() {
-        System.out.println("Car Dealer");
-        System.out.println("(1) buy or sell a vehicle");
-        System.out.println("(2) buy or sell an engine");
-        System.out.println("(3) Start Race");
-
-        int selection = Validation.inputInt("What will you do?", 1, 3);
+        System.out.println(lang.CAR_DEALER_MENU());
+        int selection = Validation.inputInt(lang.SELECT_PROMPT(), 1, 3);
         switch (selection) {
             case 1:
                 chooseVehicle();
@@ -87,18 +70,15 @@ public class CLI {
                 if (Objects.nonNull(player.getVehicle())) {
                     chooseEngine();
                 } else {
-                    System.out.println("No vehicle to install engine with");
+                    System.out.println(lang.ERROR_MSGS().get(5));
                 }
                 break;
             case 3:
-                //TODO display limited stats of vehicle and engine
-
                 if (Objects.isNull(player.getVehicle())) {
-                    System.out.println("There is no vehicle");
+                    System.out.println(lang.ERROR_MSGS().get(5));
                 } else if (Objects.isNull(player.getEngine())) {
-                    System.out.println("There is no engine");
+                    System.out.println(lang.ERROR_MSGS().get(6));
                 } else {
-                    System.out.println("This is your Vehicle");
                     player.getVehicle().displayVehicleSpecs();
                     player.getVehicle().displayVehicle();
                     player.getVehicle().addPassenger();
@@ -109,7 +89,7 @@ public class CLI {
                 }
 
             default:
-                System.out.println("Invalid Selection");
+                System.out.println(lang.ERROR_MSGS().get(3));
                 break;
         }
         return true;
@@ -122,12 +102,12 @@ public class CLI {
             for (Vehicle vehicle : vehicleType.vehicles()) {
                 vehicle.displayVehicleSpecs();
             }
-            int selection = Validation.inputInt("Choose Vehicle 1-" + vehicleType.vehicles().size(), 1, vehicleType.vehicles().size());
+            int selection = Validation.inputInt(lang.VEHICLE_PROMPT() + vehicleType.vehicles().size(), 1, vehicleType.vehicles().size());
             player.buyVehicle(vehicleType.vehicles().get(selection - 1));
 
         } else {
             player.sellVehicle();
-            System.out.println("Vehicle Sold");
+            System.out.println(lang.VEHICLE_SOLD());
             player.displayBalance();
         }
     }
@@ -137,11 +117,11 @@ public class CLI {
         if (Objects.isNull(player.getEngine())) {
             player.displayBalance();
             System.out.println(vehicleType.engines());
-            int selection = Validation.inputInt("Select Engine 1-" + vehicleType.engines().size(), 1, vehicleType.engines().size());
+            int selection = Validation.inputInt(lang.ENGINE_PROMPT() + vehicleType.engines().size(), 1, vehicleType.engines().size());
             player.buyEngine(vehicleType.engines().get(selection - 1));
         } else {
             player.sellEngine();
-            System.out.println("Engine Sold");
+            System.out.println(lang.ENGINE_SOLD());
             player.displayBalance();
         }
 
@@ -150,13 +130,9 @@ public class CLI {
     public boolean controlVehicle() {
         displayCurrentTime();
         displayHUD();
-        System.out.println("Choose an action");
-        System.out.println("(1) Accelerate");
-        System.out.println("(2) Decelerate");
-        System.out.println("(3) Coast");
-        System.out.println("(4) Jump out the vehicle");
+        System.out.println(lang.CONTROL_MENU());
         System.out.println(Color.getColor(player));
-        int action = Validation.inputInt("Select action");
+        int action = Validation.inputInt(lang.SELECT_PROMPT());
         switch (action) {
             case 1:
                 accelerate();
@@ -172,16 +148,16 @@ public class CLI {
                 vehicleType.jumpOut(player);
                 return false;
             default:
-                System.out.println("Invalid Selection");
+                System.out.println(lang.ERROR_MSGS().get(2));
                 return true;
         }
         if (distanceFromTarget < -100) {
             System.out.println(Color.RED_BOLD);
-            System.out.println("Y̷̬͎͑Ô̶̡͇̬̄͝Ṵ̸̰͚͑͒̕ ̵̨͔͎̇̀͂V̴̞̱̀A̴̝̮͊̆͌͜N̷̬̰̾̔̿Ȉ̷̥̣Ṡ̵͍H̸̡̖͚̪̅́");
+            System.out.println(lang.END().get(0));
             return false;
         } else if (distanceFromTarget < 70) {
             System.out.println(Color.RED_BOLD);
-            System.out.println("The end is near...");
+            System.out.println(lang.END().get(1));
         }
 
         System.out.println(Color.RESET);
@@ -228,7 +204,7 @@ public class CLI {
 //    }
 
     public void displayHUD() {
-        System.out.printf("\nTarget Distance:\t%s\nDistance From Target\t%s\nCurrent Speed\t%s\n",
+        System.out.printf(lang.HUD(),
                 targetDistance, distanceFromTarget, player.getVehicle().getCurrentSpeed()
         );
     }
