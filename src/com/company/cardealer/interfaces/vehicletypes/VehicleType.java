@@ -1,4 +1,4 @@
-package com.company.cardealer.interfaces;
+package com.company.cardealer.interfaces.vehicletypes;
 
 import com.company.cardealer.abstracts.Engine;
 import com.company.cardealer.abstracts.Vehicle;

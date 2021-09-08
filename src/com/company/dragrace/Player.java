@@ -2,10 +2,6 @@ package com.company.dragrace;
 
 import com.company.cardealer.abstracts.Engine;
 import com.company.cardealer.abstracts.Vehicle;
-import com.company.cardealer.airvehicles.CommercialAircraft;
-import com.company.cardealer.interfaces.AirVehicles;
-import com.company.cardealer.landvehicles.Car;
-import com.company.cardealer.landvehicles.Motorcycle;
 
 import java.text.NumberFormat;
 import java.util.Locale;

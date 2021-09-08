@@ -1,19 +1,13 @@
 package com.company.dragrace;
 
-import com.company.cardealer.abstracts.Engine;
 import com.company.cardealer.abstracts.Vehicle;
 import com.company.cardealer.airvehicles.CommercialAircraft;
-import com.company.cardealer.engines.ElectricEngine;
-import com.company.cardealer.engines.GasEngine;
-import com.company.cardealer.interfaces.AirVehicles;
-import com.company.cardealer.interfaces.LandVehicles;
-import com.company.cardealer.interfaces.VehicleType;
-import com.company.cardealer.landvehicles.Car;
-import com.company.cardealer.landvehicles.Motorcycle;
+import com.company.cardealer.interfaces.vehicletypes.AirVehicles;
+import com.company.cardealer.interfaces.vehicletypes.LandVehicles;
+import com.company.cardealer.interfaces.vehicletypes.VehicleType;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
