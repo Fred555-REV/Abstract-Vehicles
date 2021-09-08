@@ -30,43 +30,25 @@ public class Player {
     }
 
     protected void buyVehicle(Vehicle vehicle) {
-        if (vehicle.getCost() <= balance) {
-            balance -= vehicle.getCost();
-            this.vehicle = vehicle;
-        } else {
-            System.out.println(Color.RED + "Not Enough Money" + Color.RESET);
-        }
+
+        balance -= vehicle.getCost();
+        this.vehicle = vehicle;
+
 
     }
 
     protected void sellVehicle() {
-        if (Objects.nonNull(vehicle)) {
-            if (Objects.isNull(vehicle.getEngine())) {
-                balance += vehicle.getCost();
-                vehicle = null;
-            } else {
-                System.out.println("The vehicle still has an engine are you sure? [y/n] (you will lose the engine and it's value)");
-                Scanner scan = new Scanner(System.in);
-                String input = scan.nextLine();
-                if (input.toUpperCase(Locale.ROOT).equals("Y")) {
-                    balance += vehicle.getCost();
-                    vehicle = null;
-                }
-            }
-        } else {
-            System.out.println("There is nothing to sell");
-        }
+
+        balance += vehicle.getCost();
+        vehicle = null;
 
 
     }
 
     protected void buyEngine(Engine engine) {
-        if (engine.getCost() <= balance) {
-            balance -= vehicle.getCost();
-            this.vehicle.installEngine(engine);
-        } else {
-            System.out.println(Color.RED + "Not Enough Money" + Color.RESET);
-        }
+        balance -= vehicle.getCost();
+        this.vehicle.installEngine(engine);
+
     }
 
     protected void sellEngine() {

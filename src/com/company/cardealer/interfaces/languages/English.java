@@ -40,7 +40,8 @@ public class English implements Language {
                 "Invalid Selection",
                 "404 - Item Not Found",
                 "There is no vehicle",
-                "There is no engine"
+                "There is no engine",
+                "Not Enough Money"
         );
     }
 
@@ -50,12 +51,17 @@ public class English implements Language {
     }
 
     @Override
-    public String VEHICLE_PROMPT() {
+    public String BUY_VEHICLE_PROMPT() {
         return "Choose Vehicle 1-";
     }
 
     @Override
-    public String ENGINE_PROMPT() {
+    public String SELL_VEHICLE_PROMPT() {
+        return "The vehicle still has an engine are you sure? (you will lose the engine and it's value)\n(1) Yes\n(2) No";
+    }
+
+    @Override
+    public String BUY_ENGINE_PROMPT() {
         return "Select Engine 1-";
     }
 
@@ -99,6 +105,40 @@ public class English implements Language {
                 "Initial Time:\t",
                 "End Time:    \t",
                 "You took:    \t"
+        );
+    }
+
+    @Override
+    public String SECONDS() {
+        return "seconds";
+    }
+
+    @Override
+    public String JUMPOUT_AIR() {
+        return "You jump out of a %s with a parachute going %s knots\n";
+    }
+
+    @Override
+    public String JUMPOUT_LAND() {
+        return "You jump out of %s going %s mph\n";
+    }
+
+    @Override
+    public String YOU_HAVE() {
+        return "You have ";
+    }
+
+    @Override
+    public String HEALTH() {
+        return "Health";
+    }
+
+    @Override
+    public List<String> DISPLAY_RACE_RESULT() {
+        return List.of(
+                "Because you missed the target distance by %s units %s seconds have been added to your time.\n",
+                "Because you took %s damage from jumping out of the vehicle %s seconds have been added to your time.\n",
+                "Your final score was "
         );
     }
 }

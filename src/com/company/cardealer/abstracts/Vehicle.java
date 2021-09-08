@@ -99,19 +99,11 @@ public abstract class Vehicle {
     }
 
     public void installEngine(Engine engine) {
-        if (this.engine == null) {
-            setEngine(engine);
-        } else {
-            System.out.println("There is already an engine installed.");
-        }
+        this.engine = engine;
     }
 
     public void removeEngine() {
-        if (engine != null) {
-            setEngine(null);
-        } else {
-            System.out.println("There is no engine to remove");
-        }
+        this.engine = null;
     }
 
     public void accelerate() {
@@ -136,10 +128,6 @@ public abstract class Vehicle {
         if (currentSpeed < 0) {
             currentSpeed = 0;
         }
-    }
-
-    protected void setEngine(Engine engine) {
-        this.engine = engine;
     }
 
     public String getModel() {

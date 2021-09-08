@@ -13,9 +13,11 @@ import java.util.List;
 import java.util.spi.LocaleNameProvider;
 
 public class AirVehicles implements VehicleType {
-    private Language lang;
-    public AirVehicles() {
-        lang = new English();
+    private Language lang = new English();
+
+    @Override
+    public void setLang(Language lang) {
+        this.lang = lang;
     }
 
     @Override
@@ -44,16 +46,17 @@ public class AirVehicles implements VehicleType {
 
     @Override
     public void jumpOut(Player player) {
-        player.takeDamage(player.getVehicle().getCurrentSpeed()/3);
-        System.out.printf("You jump out of a %s with a parachute going %s knots\n",
+        player.takeDamage(player.getVehicle().getCurrentSpeed() / 3);
+        System.out.printf(lang.JUMPOUT_AIR(),
                 player.getVehicle().getModel(), player.getVehicle().getCurrentSpeed() * 0.868976);
         if (player.getHealth() <= 0) {
             System.out.print(Color.RED);
             System.out.println(lang.END().get(0));
             System.out.print(Color.RESET);
         }
-        System.out.println("You now have " + player.getHealth() + " health");
+        System.out.println(lang.YOU_HAVE() + player.getHealth() + " " + lang.HEALTH());
     }
+
     @Override
     public void displayRaceResult(Player player, int distanceFromTarget, long totalTime) {
 
@@ -71,15 +74,15 @@ public class AirVehicles implements VehicleType {
             } else {
                 penalty = 0;
             }
-            System.out.printf("Because you missed the target distance by %s units %s seconds have been added to your time.\n"
+            System.out.printf(lang.DISPLAY_RACE_RESULT().get(0)
                     , Math.abs(distanceFromTarget), penalty);
         }
         if (player.getHealth() < 100) {
-            System.out.printf("Because you took %s damage from jumping out of the vehicle %s seconds have been added to your time.\n",
-                    player.getVehicle().getCurrentSpeed()/3, (100 - player.getHealth()) / 10);
+            System.out.printf(lang.DISPLAY_RACE_RESULT().get(1),
+                    player.getVehicle().getCurrentSpeed() / 3, (100 - player.getHealth()) / 10);
             penalty += (100 - player.getHealth()) / 10;
         }
-        System.out.println("Your final score was " + (totalTime + penalty));
+        System.out.println(lang.DISPLAY_RACE_RESULT().get(2) + (totalTime + penalty));
 
     }
 }

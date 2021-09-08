@@ -4,12 +4,14 @@ import com.company.cardealer.abstracts.Vehicle;
 import com.company.cardealer.airvehicles.CommercialAircraft;
 import com.company.cardealer.interfaces.languages.English;
 import com.company.cardealer.interfaces.languages.Language;
+import com.company.cardealer.interfaces.languages.Spanish;
 import com.company.cardealer.interfaces.vehicletypes.AirVehicles;
 import com.company.cardealer.interfaces.vehicletypes.LandVehicles;
 import com.company.cardealer.interfaces.vehicletypes.VehicleType;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -27,7 +29,22 @@ public class CLI {
         addPlayer();
         setVehicleType();
 //        TODO TEMPORARY LANGUAGE MAKE setLang() method
+
         lang = new English();
+    }
+
+    private void setLang() {
+        int choice = Validation.inputInt("(1) English\n(2) Español", 1, 2);
+        switch (choice) {
+            case 1:
+                lang = new English();
+                break;
+//            case 2:
+//                lang = new Spanish();
+//                break;
+
+        }
+        vehicleType.setLang(lang);
     }
 
     private void setVehicleType() {
@@ -96,35 +113,69 @@ public class CLI {
     }
 
     public void chooseVehicle() {
-        //TODO if null buy else sell
+        //TODO if null then buy else sell
         if (Objects.isNull(player.getVehicle())) {
-            player.displayBalance();
-            for (Vehicle vehicle : vehicleType.vehicles()) {
-                vehicle.displayVehicleSpecs();
-            }
-            int selection = Validation.inputInt(lang.VEHICLE_PROMPT() + vehicleType.vehicles().size(), 1, vehicleType.vehicles().size());
-            player.buyVehicle(vehicleType.vehicles().get(selection - 1));
-
+            buyVehicle();
         } else {
-            player.sellVehicle();
-            System.out.println(lang.VEHICLE_SOLD());
-            player.displayBalance();
+            sellVehicle();
         }
     }
 
-    public void chooseEngine() {
-        //TODO if null buy else sell
-        if (Objects.isNull(player.getEngine())) {
-            player.displayBalance();
-            System.out.println(vehicleType.engines());
-            int selection = Validation.inputInt(lang.ENGINE_PROMPT() + vehicleType.engines().size(), 1, vehicleType.engines().size());
-            player.buyEngine(vehicleType.engines().get(selection - 1));
+    private void buyVehicle() {
+        player.displayBalance();
+        for (Vehicle vehicle : vehicleType.vehicles()) {
+            vehicle.displayVehicleSpecs();
+        }
+        int selection = Validation.inputInt(lang.BUY_VEHICLE_PROMPT() + vehicleType.vehicles().size(), 1, vehicleType.vehicles().size());
+
+        if (player.getVehicle().getCost() <= player.getBalance()) {
+            player.buyVehicle(vehicleType.vehicles().get(selection - 1));
         } else {
-            player.sellEngine();
-            System.out.println(lang.ENGINE_SOLD());
-            player.displayBalance();
+            System.out.println(Color.RED + lang.ERROR_MSGS().get(7) + Color.RESET);
+        }
+    }
+
+    private void sellVehicle() {
+        if (Objects.isNull(player.getVehicle().getEngine())) {
+            player.sellVehicle();
+        } else {
+            System.out.println(lang.SELL_VEHICLE_PROMPT());
+            Scanner scan = new Scanner(System.in);
+            String input = scan.next();
+            if (input.equals("1")) {
+                player.sellVehicle();
+            }
+        }
+        System.out.println(lang.VEHICLE_SOLD());
+        player.displayBalance();
+    }
+
+
+    public void chooseEngine() {
+        //TODO if null then buy else sell
+        if (Objects.isNull(player.getEngine())) {
+            buyEngine();
+        } else {
+            sellEngine();
         }
 
+    }
+
+    private void sellEngine() {
+        player.sellEngine();
+        System.out.println(lang.ENGINE_SOLD());
+        player.displayBalance();
+    }
+
+    private void buyEngine() {
+        player.displayBalance();
+        System.out.println(vehicleType.engines());
+        int selection = Validation.inputInt(lang.BUY_ENGINE_PROMPT() + vehicleType.engines().size(), 1, vehicleType.engines().size());
+        if (vehicleType.engines().get(selection).getCost() <= player.getBalance()) {
+            player.buyEngine(vehicleType.engines().get(selection - 1));
+        } else {
+            System.out.println(Color.RED + lang.ERROR_MSGS().get(7) + Color.RESET);
+        }
     }
 
     public boolean controlVehicle() {
@@ -260,7 +311,7 @@ public class CLI {
     public void displayTotalTime() {
         System.out.println(lang.TIME().get(0) + initialTime.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
         System.out.println(lang.TIME().get(1) + TimeKeeper.endTime.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
-        System.out.println(lang.TIME().get(2) + Duration.between(initialTime, TimeKeeper.endTime).getSeconds() + " seconds");
+        System.out.println(lang.TIME().get(2) + Duration.between(initialTime, TimeKeeper.endTime).getSeconds() + " " + lang.SECONDS());
     }
 
     public static long getTotalTime() {

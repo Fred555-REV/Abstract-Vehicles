@@ -4,6 +4,8 @@ import com.company.cardealer.abstracts.Engine;
 import com.company.cardealer.abstracts.Vehicle;
 import com.company.cardealer.engines.ElectricEngine;
 import com.company.cardealer.engines.GasEngine;
+import com.company.cardealer.interfaces.languages.English;
+import com.company.cardealer.interfaces.languages.Language;
 import com.company.cardealer.landvehicles.Car;
 import com.company.cardealer.landvehicles.Motorcycle;
 import com.company.dragrace.Color;
@@ -12,6 +14,13 @@ import com.company.dragrace.Player;
 import java.util.List;
 
 public class LandVehicles implements VehicleType {
+    private Language lang = new English();
+
+    @Override
+    public void setLang(Language lang) {
+        this.lang = lang;
+    }
+
     @Override
     public List<Vehicle> vehicles() {
         return List.of(
@@ -40,15 +49,16 @@ public class LandVehicles implements VehicleType {
     @Override
     public void jumpOut(Player player) {
         player.takeDamage(player.getVehicle().getCurrentSpeed());
-        System.out.printf("You jump out of %s going %s mph\n",
+        System.out.printf(lang.JUMPOUT_LAND(),
                 player.getVehicle().getModel(), player.getVehicle().getCurrentSpeed());
         if (player.getHealth() <= 0) {
-            System.out.print(Color.getColor("RED"));
-            System.out.println("Y̵̙͕̫̒O̶͉̬̠̔Ụ̵͋ ̷͈͝D̴̥̱̦̀̇I̷͖͒̊̕E̷̛̙D");
+            System.out.print(Color.RED_BOLD);
+            System.out.println(lang.END().get(0));
             System.out.print(Color.RESET);
         }
-        System.out.println("You now have " + player.getHealth() + " health");
+        System.out.println(lang.YOU_HAVE() + player.getHealth() + " " + lang.HEALTH());
     }
+
     @Override
     public void displayRaceResult(Player player, int distanceFromTarget, long totalTime) {
 
@@ -66,18 +76,15 @@ public class LandVehicles implements VehicleType {
             } else {
                 penalty = 0;
             }
-            System.out.printf("Because you missed the target distance by %s units %s seconds have been added to your time.\n"
+            System.out.printf(lang.DISPLAY_RACE_RESULT().get(0)
                     , Math.abs(distanceFromTarget), penalty);
         }
         if (player.getHealth() < 100) {
-            System.out.printf("Because you took %s damage from jumping out of the vehicle %s seconds have been added to your time.\n",
+            System.out.printf(lang.DISPLAY_RACE_RESULT().get(1),
                     player.getVehicle().getCurrentSpeed(), (100 - player.getHealth()) / 10);
             penalty += (100 - player.getHealth()) / 10;
         }
-        System.out.println("Your final score was " + (totalTime + penalty));
-        if (player.getHealth() == 0) {
-            System.out.println("RIP");
-        }
+        System.out.println(lang.DISPLAY_RACE_RESULT().get(2) + (totalTime + penalty));
 
     }
 }
