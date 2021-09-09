@@ -57,10 +57,7 @@ public class Player {
 
     }
 
-    public void displayBalance() {
-        System.out.printf("%s%s has %s%s\n", Color.getColor(this), getName(),
-                NumberFormat.getCurrencyInstance().format(getBalance()), Color.RESET);
-    }
+
 
     public Vehicle getVehicle() {
         return vehicle;

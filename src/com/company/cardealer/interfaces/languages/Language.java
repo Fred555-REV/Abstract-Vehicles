@@ -29,6 +29,10 @@ public interface Language {
 
     List<String> END();
 
+    String HAS();
+
+    String PASSENGERS();
+
     String HUD();
 
     List<String> TIME();

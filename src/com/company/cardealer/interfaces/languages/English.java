@@ -95,6 +95,16 @@ public class English implements Language {
     }
 
     @Override
+    public String HAS() {
+        return "has";
+    }
+
+    @Override
+    public String PASSENGERS() {
+        return "passengers";
+    }
+
+    @Override
     public String HUD() {
         return "\nTarget Distance:\t%s\nDistance From Target\t%s\nCurrent Speed\t%s\n";
     }

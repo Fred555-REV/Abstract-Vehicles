@@ -9,6 +9,7 @@ import com.company.cardealer.interfaces.vehicletypes.AirVehicles;
 import com.company.cardealer.interfaces.vehicletypes.LandVehicles;
 import com.company.cardealer.interfaces.vehicletypes.VehicleType;
 
+import java.text.NumberFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -122,7 +123,7 @@ public class CLI {
     }
 
     private void buyVehicle() {
-        player.displayBalance();
+        displayPlayerBalance();
         for (Vehicle vehicle : vehicleType.vehicles()) {
             vehicle.displayVehicleSpecs();
         }
@@ -147,7 +148,7 @@ public class CLI {
             }
         }
         System.out.println(lang.VEHICLE_SOLD());
-        player.displayBalance();
+        displayPlayerBalance();
     }
 
 
@@ -164,11 +165,11 @@ public class CLI {
     private void sellEngine() {
         player.sellEngine();
         System.out.println(lang.ENGINE_SOLD());
-        player.displayBalance();
+        displayPlayerBalance();
     }
 
     private void buyEngine() {
-        player.displayBalance();
+        displayPlayerBalance();
         System.out.println(vehicleType.engines());
         int selection = Validation.inputInt(lang.BUY_ENGINE_PROMPT() + vehicleType.engines().size(), 1, vehicleType.engines().size());
         if (vehicleType.engines().get(selection).getCost() <= player.getBalance()) {
@@ -242,7 +243,7 @@ public class CLI {
         player.getVehicle().coast();
     }
 
-//    public void jumpOut() {
+    //    public void jumpOut() {
 //        player.takeDamage(player.getVehicle().getCurrentSpeed());
 //        System.out.printf("You jump out of %s going %s mph\n",
 //                player.getVehicle().getModel(), player.getVehicle().getCurrentSpeed());
@@ -253,6 +254,16 @@ public class CLI {
 //        displayTotalTime();
 //        vehicleType.displayRaceResult(player,distanceFromTarget, getTotalTime());
 //    }
+    //display current passenger amount for possible future use
+    public void displayCurrentPassengerAmount() {
+        System.out.printf("%s %s %s %s.\n", player.getVehicle().getModel(), lang.HAS(),
+                player.getVehicle().getCurrentPassengerAmount(), lang.PASSENGERS());
+    }
+
+    public void displayPlayerBalance() {
+        System.out.printf("%s%s %s %s%s.\n", Color.getColor(player), player.getName(), lang.HAS(),
+                NumberFormat.getCurrencyInstance().format(player.getBalance()), Color.RESET);
+    }
 
     public void displayHUD() {
         System.out.printf(lang.HUD(),

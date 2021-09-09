@@ -94,9 +94,7 @@ public abstract class Vehicle {
         return currentPassengerAmount;
     }
 
-    public void displayCurrentPassengerAmount() {
-        System.out.printf("%s has %s passengers\n", model, currentPassengerAmount);
-    }
+
 
     public void installEngine(Engine engine) {
         this.engine = engine;
