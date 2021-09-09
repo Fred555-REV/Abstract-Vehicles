@@ -11,17 +11,16 @@ public class Validation {
         Scanner scan = new Scanner(System.in);
         boolean validOption = true;
         int input = -1;
-        try {
+        do {
+            try {
 
-            input = scan.nextInt();
+                input = scan.nextInt();
 
-        } catch (ClassCastException | InputMismatchException cce) {
-            System.out.println("Your input is invalid, please try again");
-            validOption = false;
-        }
-        if (!validOption) {
-            inputInt(prompt);
-        }
+            } catch (ClassCastException | InputMismatchException cce) {
+                System.out.println("Your input is invalid, please try again");
+                validOption = false;
+            }
+        } while (validOption);
         return input;
     }
 
@@ -30,22 +29,17 @@ public class Validation {
             System.out.println(prompt);
         }
         Scanner scan = new Scanner(System.in);
-        boolean validOption = true;
         int input = -1;
-        try {
+        do {
+            try {
 
-            input = scan.nextInt();
+                input = scan.nextInt();
 
-        } catch (ClassCastException | InputMismatchException cce) {
-            System.out.println("Your input is invalid, please try again");
-            validOption = false;
-        }
-        if (!validOption) {
-            inputInt(prompt, min, max);
-        } else if (input > max || input < min) {
-            System.out.println("Input should be between " + min + " and " + max);
-            inputInt(prompt, min, max);
-        }
+            } catch (ClassCastException | InputMismatchException cce) {
+                System.out.println("Your input is invalid, please try again");
+            }
+
+        } while (input > max || input < min);
         return input;
     }
 }

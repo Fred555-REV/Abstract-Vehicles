@@ -44,9 +44,11 @@ public class CLI {
                 break;
 
         }
+
         if (Objects.nonNull(vehicleType)) {
             vehicleType.setLang(lang);
         }
+
     }
 
     private void setVehicleType() {
