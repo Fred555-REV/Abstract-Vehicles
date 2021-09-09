@@ -12,6 +12,7 @@ import com.company.cardealer.interfaces.vehicletypes.VehicleType;
 import java.text.NumberFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Scanner;
@@ -26,12 +27,10 @@ public class CLI {
     private Language lang;
 
     public CLI() {
-
+        setLang();
         addPlayer();
         setVehicleType();
-//        TODO TEMPORARY LANGUAGE MAKE setLang() method
 
-        lang = new English();
     }
 
     private void setLang() {
@@ -40,12 +39,11 @@ public class CLI {
             case 1:
                 lang = new English();
                 break;
-//            case 2:
-//                lang = new Spanish();
-//                break;
+            case 2:
+                lang = new Spanish();
+                break;
 
         }
-        vehicleType.setLang(lang);
     }
 
     private void setVehicleType() {
@@ -63,6 +61,7 @@ public class CLI {
                 this.distanceFromTarget = 1000;
                 break;
         }
+        vehicleType.setLang(lang);
     }
 
     public void addPlayer() {
@@ -78,7 +77,7 @@ public class CLI {
     }
 
     public boolean setup() {
-        System.out.println(lang.CAR_DEALER_MENU());
+        lang.CAR_DEALER_MENU().forEach(System.out::println);
         int selection = Validation.inputInt(lang.SELECT_PROMPT(), 1, 3);
         switch (selection) {
             case 1:
@@ -182,7 +181,7 @@ public class CLI {
     public boolean controlVehicle() {
         displayCurrentTime();
         displayHUD();
-        System.out.println(lang.CONTROL_MENU());
+        lang.CONTROL_MENU().forEach(System.out::println);
         System.out.println(Color.getColor(player));
         int action = Validation.inputInt(lang.SELECT_PROMPT());
         switch (action) {

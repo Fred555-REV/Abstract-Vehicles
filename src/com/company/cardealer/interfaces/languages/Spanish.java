@@ -6,7 +6,7 @@ public class Spanish implements Language {
 
     @Override
     public String VEHICLETYPE_PROMPT() {
-        return "(1) Vehiculos aéreo\n(2) vehículo terrestre";
+        return "(1) Vehiculos Aéreo\n(2) Vehículos Terrestre";
     }
 
     @Override
