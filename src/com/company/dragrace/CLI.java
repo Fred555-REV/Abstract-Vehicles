@@ -128,7 +128,7 @@ public class CLI {
         }
         int selection = Validation.inputInt(lang.BUY_VEHICLE_PROMPT() + vehicleType.vehicles().size(), 1, vehicleType.vehicles().size());
 
-        if (player.getVehicle().getCost() <= player.getBalance()) {
+        if (vehicleType.vehicles().get(selection - 1).getCost() <= player.getBalance()) {
             player.buyVehicle(vehicleType.vehicles().get(selection - 1));
         } else {
             System.out.println(Color.RED + lang.ERROR_MSGS().get(7) + Color.RESET);
@@ -171,7 +171,7 @@ public class CLI {
         displayPlayerBalance();
         System.out.println(vehicleType.engines());
         int selection = Validation.inputInt(lang.BUY_ENGINE_PROMPT() + vehicleType.engines().size(), 1, vehicleType.engines().size());
-        if (vehicleType.engines().get(selection).getCost() <= player.getBalance()) {
+        if (vehicleType.engines().get(selection - 1).getCost() <= player.getBalance()) {
             player.buyEngine(vehicleType.engines().get(selection - 1));
         } else {
             System.out.println(Color.RED + lang.ERROR_MSGS().get(7) + Color.RESET);
@@ -197,6 +197,7 @@ public class CLI {
             case 4:
                 System.out.println(Color.getColor(player));
                 vehicleType.jumpOut(player);
+                vehicleType.displayRaceResult(player, distanceFromTarget, getTotalTime());
                 return false;
             default:
                 System.out.println(lang.ERROR_MSGS().get(2));
