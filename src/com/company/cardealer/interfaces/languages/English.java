@@ -140,7 +140,7 @@ public class English implements Language {
 
     @Override
     public String HEALTH() {
-        return "Health";
+        return "health";
     }
 
     @Override
