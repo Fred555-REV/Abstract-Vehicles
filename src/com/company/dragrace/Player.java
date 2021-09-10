@@ -39,24 +39,23 @@ public class Player {
 
     protected void sellVehicle() {
 
-        balance += vehicle.getCost();
+        balance += vehicle.getCost()*.9;
         vehicle = null;
 
 
     }
 
     protected void buyEngine(Engine engine) {
-        balance -= vehicle.getCost();
+        balance -= engine.getCost();
         this.vehicle.installEngine(engine);
 
     }
 
     protected void sellEngine() {
-        balance += getEngine().getCost();
+        balance += getEngine().getCost() * .9;
         vehicle.removeEngine();
 
     }
-
 
 
     public Vehicle getVehicle() {

@@ -114,6 +114,7 @@ public class CLI {
                 System.out.println(lang.ERROR_MSGS().get(3));
                 break;
         }
+        displayPlayerBalance();
         return true;
     }
 
@@ -152,7 +153,6 @@ public class CLI {
             }
         }
         System.out.println(lang.VEHICLE_SOLD());
-        displayPlayerBalance();
     }
 
 
@@ -169,7 +169,6 @@ public class CLI {
     private void sellEngine() {
         player.sellEngine();
         System.out.println(lang.ENGINE_SOLD());
-        displayPlayerBalance();
     }
 
     private void buyEngine() {
