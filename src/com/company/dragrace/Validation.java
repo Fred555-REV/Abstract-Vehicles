@@ -8,19 +8,19 @@ public class Validation {
         if (!prompt.equals("")) {
             System.out.println(prompt);
         }
-        Scanner scan = new Scanner(System.in);
         boolean validOption = true;
         int input = -1;
         do {
             try {
 
+                Scanner scan = new Scanner(System.in);
                 input = scan.nextInt();
 
             } catch (ClassCastException | InputMismatchException cce) {
                 System.out.println("Your input is invalid, please try again");
                 validOption = false;
             }
-        } while (validOption);
+        } while (!validOption);
         return input;
     }
 
@@ -28,11 +28,11 @@ public class Validation {
         if (!prompt.equals("")) {
             System.out.println(prompt);
         }
-        Scanner scan = new Scanner(System.in);
         int input = -1;
         do {
             try {
 
+                Scanner scan = new Scanner(System.in);
                 input = scan.nextInt();
 
             } catch (ClassCastException | InputMismatchException cce) {
